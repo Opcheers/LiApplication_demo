@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/home"
+        android:title="@string/tab_home"
+        android:icon="@drawable/ic_navigation_home"/>
+    <item
+        android:id="@+id/shop"
+        android:title="@string/tab_shop"
+        android:icon="@drawable/ic_navigation_shop"/>
+    <item
+        android:id="@+id/activity"
+        android:title="@string/tab_activity"
+        android:icon="@drawable/ic_navigation_ticket"/>
+<!--    <item-->
+<!--        android:id="@+id/bus"-->
+<!--        android:title="@string/tab_bus"-->
+<!--        android:icon="@drawable/ic_navigation_bus"/>-->
+    <item
+        android:id="@+id/user_center"
+        android:title="@string/tab_user_center"
+        android:icon="@drawable/ic_navigation_usercenter"/>
+</menu>

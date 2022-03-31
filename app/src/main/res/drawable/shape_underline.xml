@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+        <shape>
+            <solid android:color="@color/maincolor" /><!--下划线颜色-->
+        </shape>
+    </item>
+    <item android:bottom="4dp"> <!--下划线厚度-->
+        <shape>
+            <solid android:color = "@android:color/white" /><!--背景色 不能透明否则会显示上面的下划线颜色-->
+        </shape>
+    </item>
+</layer-list>

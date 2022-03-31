@@ -1,0 +1,50 @@
+<resources>
+    <string name="app_name">李氏农场</string>
+    <string name="main_et_tel">请输入手机号</string>
+    <string name="main_et_code">请输入验证码</string>
+    <string name="main_btn_getcode">获取验证码</string>
+    <string name="main_btn_login">登录</string>
+    <string name="main_tv_help">帮助</string>
+    <string name="main_tv_privacy">隐私</string>
+    <string name="main_tv_terms">条款</string>
+
+    <string-array name="home_activity_indicator">
+        <item>亲子活动</item>
+        <item>旅游</item>
+    </string-array>
+    <string name="home_et_inputgoods">输入商品</string>
+    <string name="home_btn_search">搜索</string>
+    <string name="home_tv_farm">开心农场</string>
+    <string name="home_tv_discount">优惠活动</string>
+    <string name="home_tv_announcement_title">
+        通知：4号土地可以开始租赁了！！
+    </string>
+    <string name="home_tv_announcement_text">
+        4号土地共100平方米，土质肥沃，适合种植玉米，大豆，红薯等农作物，先到先得，速来抢购吧！
+    </string>
+    <string name="farm_tv_land">我的土地</string>
+    <string name="farm_tv_announcement">
+        欢迎来到开心农场！&#10;
+        在这里你可以租赁我们的土地进行耕种。&#10;
+        租赁模式介绍：&#10;
+        （1）无托管&#10;
+        （2）半托管&#10;
+        （3）全托管&#10;
+    </string>
+
+    <string name="user_et_search">搜索订单或班车路线</string>
+    <string name="user_order">我的订单</string>
+    <string name="user_farmland">我的农场</string>
+    <string name="user_bus">班车预定</string>
+    <string name="user_info_title">个人资料</string>
+    <string name="tab_home">主页</string>
+    <string name="tab_bus">班车</string>
+    <string name="tab_user_center">我的</string>
+    <string name="tab_shop">商城</string>
+    <string name="tab_activity">活动</string>
+    <string name="home_tv_recommend">猜你喜欢</string>
+    <string name="home_tv_activity">精选活动</string>
+    <string name="tips_text_network_error">网络出错，请点击重试...</string>
+
+
+</resources>
