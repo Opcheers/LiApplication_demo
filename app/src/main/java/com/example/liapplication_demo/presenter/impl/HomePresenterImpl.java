@@ -1,7 +1,7 @@
 package com.example.liapplication_demo.presenter.impl;
 
 import com.example.liapplication_demo.model.Api;
-import com.example.liapplication_demo.model.domain.Station;
+import com.example.liapplication_demo.model.domain.FarmActivities;
 import com.example.liapplication_demo.presenter.IHomePresenter;
 import com.example.liapplication_demo.utils.LogUtils;
 import com.example.liapplication_demo.utils.RetrofitManager;
@@ -18,36 +18,32 @@ public class HomePresenterImpl implements IHomePresenter {
     private IHomeCallback mCallback = null;
 
     @Override
-    public void getCategories() {
-        //加载分类数据
+    public void getTopActivity() {
+        //加载推荐活动数据
         Retrofit retrofit = RetrofitManager.getInstance().getRetrofit();
         Api api = retrofit.create(Api.class);
-        Call<Station> task = api.getStation();
-        task.enqueue(new Callback<Station>() {
+        Call<FarmActivities> task = api.getTopActivity();
+        task.enqueue(new Callback<FarmActivities>() {
             @Override
-            public void onResponse(Call<Station> call, Response<Station> response) {
-                //数据结果
+            public void onResponse(Call<FarmActivities> call, Response<FarmActivities> response) {
                 int code = response.code();
-                LogUtils.d(HomePresenterImpl.this, "result code is -->  "+code);
-                if (code == HttpURLConnection.HTTP_OK){
+                LogUtils.d(HomePresenterImpl.this, "result code is --> " + code);
+                if (code == HttpURLConnection.HTTP_OK) {
                     //请求成功
-                    Station station = response.body();
-                    LogUtils.d(HomePresenterImpl.this, station.toString());
+                    FarmActivities farmActivities = response.body();
+                    LogUtils.d(HomePresenterImpl.this, farmActivities.toString());
                     if (mCallback!=null) {
-                        mCallback.onCategoriesLoaded(station);
+                        mCallback.onTopActivityLoaded(farmActivities.getData());
                     }
-                }else{
+                } else {
                     //请求失败
-                    LogUtils.i(HomePresenterImpl.this, "请求失败...");
+                    LogUtils.d(HomePresenterImpl.this, "请求失败...");
                 }
-
-
             }
 
             @Override
-            public void onFailure(Call<Station> call, Throwable t) {
-                //加载失败的数据结果
-                LogUtils.e(HomePresenterImpl.this, "请求错误..." + t);
+            public void onFailure(Call<FarmActivities> call, Throwable t) {
+                LogUtils.d(HomePresenterImpl.this, "请求错误...");
             }
         });
     }

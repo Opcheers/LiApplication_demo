@@ -5,10 +5,10 @@ import com.example.liapplication_demo.view.IHomeCallback;
 public interface IHomePresenter {
 
     /**
-     * 获取活动分类
+     * 获取推荐活动
      */
 
-    void getCategories();
+    void getTopActivity();
 
     /**
      * 注册UI通知接口

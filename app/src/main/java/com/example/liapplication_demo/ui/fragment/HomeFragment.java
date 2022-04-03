@@ -1,31 +1,50 @@
 package com.example.liapplication_demo.ui.fragment;
 
 import android.view.View;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import androidx.viewpager.widget.ViewPager;
 
+import com.bumptech.glide.Glide;
 import com.example.liapplication_demo.R;
 import com.example.liapplication_demo.base.BaseFragment;
-import com.example.liapplication_demo.model.domain.Station;
+import com.example.liapplication_demo.model.domain.FarmActivities;
 import com.example.liapplication_demo.presenter.IHomePresenter;
 import com.example.liapplication_demo.presenter.impl.HomePresenterImpl;
-import com.example.liapplication_demo.ui.adapter.HomePagerAdapter;
-import com.example.liapplication_demo.utils.LogUtils;
+import com.example.liapplication_demo.ui.adapter.HomeLooperPagerAdapter;
 import com.example.liapplication_demo.view.IHomeCallback;
-import com.google.android.material.tabs.TabLayout;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.BindView;
 
-public class HomeFragment extends BaseFragment implements IHomeCallback {
+public class HomeFragment extends BaseFragment implements IHomeCallback, ViewPager.OnPageChangeListener {
 
-    @BindView(R.id.home_activity_indicator)
-    public TabLayout mTabLayout;
 
-    @BindView(R.id.home_activity_viewpager)
-    public ViewPager homePager;
+    @BindView(R.id.looper_pager)
+    public ViewPager mLoopPager;
+    @BindView(R.id.point_container)
+    public LinearLayout mPointContainer;//轮播图指示点
+    @BindView(R.id.actName)
+    public TextView mActName;
+    @BindView(R.id.actPrice)
+    public TextView mActPrice;
+    @BindView(R.id.actSite)
+    public TextView mActSite;
+    @BindView(R.id.actPreview)
+    public ImageView mActPreview;
 
     private IHomePresenter mHomePresenter;
-    private HomePagerAdapter mHomePagerAdapter;
+    private HomeLooperPagerAdapter mLooperPagerAdapter;
+    private static List<Integer> sPics = new ArrayList<>();
+
+    static {
+        sPics.add(R.mipmap.looper_1);
+        sPics.add(R.mipmap.looper_2);
+    }
 
     @Override
     protected int getRootViewResId() {
@@ -35,10 +54,17 @@ public class HomeFragment extends BaseFragment implements IHomeCallback {
     @Override
     protected void initView(View rootView) {
         setUpStates(State.SUCCESS);
-        mTabLayout.setupWithViewPager(homePager);
-        //给viewpager设置适配器
-        mHomePagerAdapter = new HomePagerAdapter(getChildFragmentManager());
-        homePager.setAdapter(mHomePagerAdapter);
+
+        //设置适配器，给适配器设置数据
+        mLooperPagerAdapter = new HomeLooperPagerAdapter();
+        mLooperPagerAdapter.setPics(sPics);
+        mLoopPager.addOnPageChangeListener(this);
+        mLoopPager.setAdapter(mLooperPagerAdapter);
+
+        //根据图片个数，加载指示点
+        insertPoint();
+        mLoopPager.setCurrentItem(sPics.size()*100, false);
+
     }
 
     @Override
@@ -51,18 +77,20 @@ public class HomeFragment extends BaseFragment implements IHomeCallback {
     @Override
     protected void loadData() {
         //加载数据
-        mHomePresenter.getCategories();
+        mHomePresenter.getTopActivity();
     }
 
-    @Override
-    public void onCategoriesLoaded(Station station) {
-        LogUtils.d(this, "onCategoriesLoaded...");
-        //加载的数据从这里回来
-        if (mHomePagerAdapter!=null) {
-            mHomePagerAdapter.setStation(station);
+
+
+    private void insertPoint() {
+        for (int i = 0; i < sPics.size(); i++) {
+            View point = new View(getContext());
+            LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(10, 10);
+            point.setBackground(getResources().getDrawable(R.drawable.shape_point_normal));
+            layoutParams.leftMargin = 10;
+            point.setLayoutParams(layoutParams);
+            mPointContainer.addView(point);
         }
-
-
     }
 
 
@@ -73,5 +101,51 @@ public class HomeFragment extends BaseFragment implements IHomeCallback {
             mHomePresenter.unregisterCallback(this);
         }
 
+    }
+
+    @Override
+    public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+    }
+
+
+    /**
+     * 这个方法的调用其实是ViewPager停下以后选中的位置
+     * @param position
+     */
+    @Override
+    public void onPageSelected(int position) {
+        int realPosition = 0;
+        if (sPics.size() != 0) 
+            realPosition = position % sPics.size();
+
+        setSelectPoint(realPosition);
+    }
+
+    private void setSelectPoint(int realPosition) {
+        for (int i = 0; i < mPointContainer.getChildCount(); i++) {
+            View point = mPointContainer.getChildAt(i);
+            if (i != realPosition) {
+                //未选中是灰色
+                point.setBackgroundResource(R.drawable.shape_point_normal);
+            }else {
+                //选中是白色
+                point.setBackgroundResource(R.drawable.shape_point_selected);
+            }
+        }
+    }
+
+    @Override
+    public void onPageScrollStateChanged(int state) {
+
+    }
+
+    @Override
+    public void onTopActivityLoaded(List<FarmActivities.DataBean> farmActivities) {
+        //加载数据从这里回来,直接设置
+        mActName.setText(farmActivities.get(0).getActName());
+        mActPrice.setText("￥" + farmActivities.get(0).getActPrice() + "元/人");
+        mActSite.setText(farmActivities.get(0).getActSite());
+        Glide.with(this).load(farmActivities.get(0).getActPreview()).into(mActPreview);
     }
 }

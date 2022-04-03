@@ -15,7 +15,7 @@ public class HomeLooperPagerAdapter extends PagerAdapter {
     @Override
     public int getCount() {
         if (mPics != null) {
-            return mPics.size();
+            return Integer.MAX_VALUE;
         }
         return 0;
     }
@@ -23,8 +23,11 @@ public class HomeLooperPagerAdapter extends PagerAdapter {
     @NonNull
     @Override
     public Object instantiateItem(@NonNull ViewGroup container, int position) {
+        int realPosition = position % mPics.size();
         ImageView imageView = new ImageView(container.getContext());
-        imageView.setImageResource(mPics.get(position));
+        imageView.setImageResource(mPics.get(realPosition));
+        imageView.setScaleType(ImageView.ScaleType.FIT_XY);//图片填充
+        imageView.setPadding(10, 10, 10, 0);//图片边距
         //添加到容器中
         container.addView(imageView);
         return imageView;

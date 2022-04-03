@@ -1,9 +1,10 @@
 package com.example.liapplication_demo.view;
 
-import com.example.liapplication_demo.model.domain.Station;
+import com.example.liapplication_demo.model.domain.FarmActivities;
+
+import java.util.List;
 
 public interface IHomeCallback  {
 
-    //当时测试用的，别管，删了就行
-    void onCategoriesLoaded(Station station);
+    void onTopActivityLoaded(List<FarmActivities.DataBean> farmActivities);
 }
