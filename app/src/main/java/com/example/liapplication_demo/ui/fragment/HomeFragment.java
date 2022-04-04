@@ -1,10 +1,13 @@
 package com.example.liapplication_demo.ui.fragment;
 
+import android.content.Intent;
+import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import androidx.cardview.widget.CardView;
 import androidx.viewpager.widget.ViewPager;
 
 import com.bumptech.glide.Glide;
@@ -13,6 +16,7 @@ import com.example.liapplication_demo.base.BaseFragment;
 import com.example.liapplication_demo.model.domain.FarmActivities;
 import com.example.liapplication_demo.presenter.IHomePresenter;
 import com.example.liapplication_demo.presenter.impl.HomePresenterImpl;
+import com.example.liapplication_demo.ui.activity.ActivityDetailActivity;
 import com.example.liapplication_demo.ui.adapter.HomeLooperPagerAdapter;
 import com.example.liapplication_demo.view.IHomeCallback;
 
@@ -36,6 +40,8 @@ public class HomeFragment extends BaseFragment implements IHomeCallback, ViewPag
     public TextView mActSite;
     @BindView(R.id.actPreview)
     public ImageView mActPreview;
+    @BindView(R.id.home_top_activity)
+    public CardView topActivity;
 
     private IHomePresenter mHomePresenter;
     private HomeLooperPagerAdapter mLooperPagerAdapter;
@@ -45,6 +51,9 @@ public class HomeFragment extends BaseFragment implements IHomeCallback, ViewPag
         sPics.add(R.mipmap.looper_1);
         sPics.add(R.mipmap.looper_2);
     }
+
+    private String mActId;
+    private FarmActivities.DataBean mTopActivity;
 
     @Override
     protected int getRootViewResId() {
@@ -65,6 +74,23 @@ public class HomeFragment extends BaseFragment implements IHomeCallback, ViewPag
         insertPoint();
         mLoopPager.setCurrentItem(sPics.size()*100, false);
 
+        //给topActivity cardview设置监听
+        onTopActivityListener();
+
+    }
+
+    private void onTopActivityListener() {
+
+        topActivity.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), ActivityDetailActivity.class);
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("topActivity", mTopActivity);
+                intent.putExtras(bundle);
+                startActivity(intent);
+            }
+        });
     }
 
     @Override
@@ -80,8 +106,6 @@ public class HomeFragment extends BaseFragment implements IHomeCallback, ViewPag
         mHomePresenter.getTopActivity();
     }
 
-
-
     private void insertPoint() {
         for (int i = 0; i < sPics.size(); i++) {
             View point = new View(getContext());
@@ -92,7 +116,6 @@ public class HomeFragment extends BaseFragment implements IHomeCallback, ViewPag
             mPointContainer.addView(point);
         }
     }
-
 
     @Override
     protected void release() {
@@ -142,10 +165,16 @@ public class HomeFragment extends BaseFragment implements IHomeCallback, ViewPag
 
     @Override
     public void onTopActivityLoaded(List<FarmActivities.DataBean> farmActivities) {
+
+        mTopActivity = farmActivities.get(0);
+
         //加载数据从这里回来,直接设置
+        mActId = farmActivities.get(0).getActId();
         mActName.setText(farmActivities.get(0).getActName());
         mActPrice.setText("￥" + farmActivities.get(0).getActPrice() + "元/人");
         mActSite.setText(farmActivities.get(0).getActSite());
         Glide.with(this).load(farmActivities.get(0).getActPreview()).into(mActPreview);
     }
+
+
 }

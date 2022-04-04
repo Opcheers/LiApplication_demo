@@ -45,6 +45,9 @@
     <string name="home_tv_recommend">猜你喜欢</string>
     <string name="home_tv_activity">精选活动</string>
     <string name="tips_text_network_error">网络出错，请点击重试...</string>
+    <string name="text_farm_activity_introduction">亲身参观开心农场，体验农场美景。不仅可以享受线下 签约开心农场的优惠，还可以亲自为自己的农田挑选播 种的种子以及农具，体会播种的乐趣。推广期内可来此 预约免费的农场参观，李氏农场欢迎您</string>
+    <string name="text_farm_activity_actSite">联系地址：北京市房山区城关街道田各庄村东</string>
+    <string name="text_farm_acticity_introdution_title">- - - - - - 活动介绍 - - - - - -</string>
 
 
 </resources>

@@ -65,7 +65,7 @@ public class ShopPagerFragment extends BaseFragment implements ICategoryPagerCal
     @Override
     public void onContentLoaded(List<Commodities.DataBean> commodities) {
         //数据列表加载
-        //TODO：
+
     }
 
     @Override
