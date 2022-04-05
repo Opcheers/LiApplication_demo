@@ -1,7 +1,6 @@
 package com.example.liapplication_demo.ui.activity;
 
 import android.content.Intent;
-import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
@@ -9,14 +8,17 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import com.example.liapplication_demo.R;
+<<<<<<< HEAD
+import com.example.liapplication_demo.iCubeNetService.NetService;
+=======
+import com.example.liapplication_demo.base.BaseActivity;
+>>>>>>> ea6dd1f8b23e664ac7c349c9159d1daf3264a07c
 
 import java.io.File;
 import java.io.FileOutputStream;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends BaseActivity {
 
     private EditText mAccount;
     private EditText mVerification;
@@ -26,23 +28,23 @@ public class MainActivity extends AppCompatActivity {
     private static final String TAG = "MainActivity";
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-
-        initView();
-
-        //第二步：给按钮设置点击事件
-        getCodeListener();
-        loginListener();
-    }
-
-    private void initView() {
+    protected void initView() {
         mAccount = findViewById(R.id.main_et_telnumber);
         mVerification = findViewById(R.id.main_et_pwdcode);
         mGetCode = findViewById(R.id.main_btn_getcode);
         mLogin = findViewById(R.id.main_btn_login);
 
+    }
+
+    @Override
+    protected void initEvent() {
+        getCodeListener();
+        loginListener();
+    }
+
+    @Override
+    protected int getLayoutResId() {
+        return R.layout.activity_main;
     }
 
     private void getCodeListener() {

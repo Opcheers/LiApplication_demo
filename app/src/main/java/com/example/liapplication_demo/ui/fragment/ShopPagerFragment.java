@@ -26,6 +26,7 @@ public class ShopPagerFragment extends BaseFragment implements ICategoryPagerCal
         bundle.putInt(Constants.KEY_SHOP_PAGER_MATERIAL_ID, categories.getId());
         bundle.putString(Constants.KEY_SHOP_PAGER_TITLE, categories.getTitle());
         shopPagerFragment.setArguments(bundle);
+
         return shopPagerFragment;
     }
 
@@ -53,8 +54,8 @@ public class ShopPagerFragment extends BaseFragment implements ICategoryPagerCal
         String title = arguments.getString(Constants.KEY_SHOP_PAGER_TITLE);
         int materialId = arguments.getInt(Constants.KEY_SHOP_PAGER_MATERIAL_ID);
 
-        LogUtils.d(this, " title --> " + title);
-        LogUtils.d(this, " materialId --> " + materialId);
+        // LogUtils.d(this, " title --> " + title);
+        // LogUtils.d(this, " materialId --> " + materialId);
 
         //加载数据
         if (mCategoryPagerPresenter != null) {
@@ -64,8 +65,13 @@ public class ShopPagerFragment extends BaseFragment implements ICategoryPagerCal
 
     @Override
     public void onContentLoaded(List<Commodities.DataBean> commodities) {
+<<<<<<< HEAD
+        // 数据列表加载
+        // TODO：
+=======
         //数据列表加载
-        //TODO：
+
+>>>>>>> ea6dd1f8b23e664ac7c349c9159d1daf3264a07c
     }
 
     @Override

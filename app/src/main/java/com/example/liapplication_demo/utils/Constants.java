@@ -11,4 +11,8 @@ public class Constants {
     //shop pager fragment bundle key
     public static final String KEY_SHOP_PAGER_MATERIAL_ID = "key_shop_pager_material_id";
     public static final String KEY_SHOP_PAGER_TITLE = "key_shop_pager_title";
+
+
+    public static final int ID_SIZE = 18;
+    public static final int PHONE_SIZE = 11;
 }

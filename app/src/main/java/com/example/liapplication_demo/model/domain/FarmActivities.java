@@ -1,8 +1,11 @@
 package com.example.liapplication_demo.model.domain;
 
+import android.os.Parcel;
+
+import java.io.Serializable;
 import java.util.List;
 
-public class FarmActivities {
+public class FarmActivities implements Serializable {
 
 
     /**
@@ -14,6 +17,12 @@ public class FarmActivities {
     private int code;
     private String msg;
     private List<DataBean> data;
+
+    protected FarmActivities(Parcel in) {
+        code = in.readInt();
+        msg = in.readString();
+    }
+
 
     public int getCode() {
         return code;
@@ -39,7 +48,8 @@ public class FarmActivities {
         this.data = data;
     }
 
-    public static class DataBean {
+
+    public static class DataBean implements Serializable{
         /**
          * actId : 6d42fb47-478a-4e9d-b674-0db8e4b6beca
          * actName : 参观开心农场
@@ -58,7 +68,7 @@ public class FarmActivities {
         private String actName;
         private int actStock;
         private String actSite;
-        private int actPrice;
+        private double actPrice;
         private String actDescription;
         private String actPreview;
         private int actPriority;
@@ -98,11 +108,11 @@ public class FarmActivities {
             this.actSite = actSite;
         }
 
-        public int getActPrice() {
+        public double getActPrice() {
             return actPrice;
         }
 
-        public void setActPrice(int actPrice) {
+        public void setActPrice(double actPrice) {
             this.actPrice = actPrice;
         }
 

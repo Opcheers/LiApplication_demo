@@ -41,7 +41,12 @@ public class ActivityFragment extends BaseFragment implements IFarmActivitiesCal
         //创建适配器
         mAdapter = new ActivityPageAdapter();
         mList.setAdapter(mAdapter);
+
+
+
     }
+
+
 
     @Override
     protected void initPresenter() {
@@ -87,6 +92,8 @@ public class ActivityFragment extends BaseFragment implements IFarmActivitiesCal
             mActivityPagePresenter.unregisterCallback(this);
         }
     }
+
+
 
 
 }

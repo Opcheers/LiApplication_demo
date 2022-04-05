@@ -5,6 +5,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -19,7 +20,7 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class ActivityPageAdapter extends RecyclerView.Adapter<ActivityPageAdapter.InnerHoder> {
+public class ActivityPageAdapter extends RecyclerView.Adapter<ActivityPageAdapter.InnerHolder> {
 
     List<FarmActivities.DataBean> mData = new ArrayList<>();
 
@@ -31,9 +32,23 @@ public class ActivityPageAdapter extends RecyclerView.Adapter<ActivityPageAdapte
      */
     @NonNull
     @Override
-    public InnerHoder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public InnerHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_list_view_farm_activity, parent, false);
-        return new InnerHoder(itemView);
+
+        final InnerHolder holder = new InnerHolder(itemView);
+        holder.activityView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                int position = holder.getAdapterPosition();
+                FarmActivities.DataBean activity = mData.get(position);
+                Toast.makeText(view.getContext(), "你点击的是" + activity.getActName(), Toast.LENGTH_SHORT).show();
+            }
+        });
+
+
+
+
+        return new InnerHolder(itemView);
     }
 
     /**
@@ -42,7 +57,7 @@ public class ActivityPageAdapter extends RecyclerView.Adapter<ActivityPageAdapte
      * @param position
      */
     @Override
-    public void onBindViewHolder(@NonNull InnerHoder holder, int position) {
+    public void onBindViewHolder(@NonNull InnerHolder holder, int position) {
         FarmActivities.DataBean dataBean = mData.get(position);
         holder.setData(dataBean);
     }
@@ -66,7 +81,9 @@ public class ActivityPageAdapter extends RecyclerView.Adapter<ActivityPageAdapte
     }
 
 
-    public class InnerHoder extends RecyclerView.ViewHolder {
+    public class InnerHolder extends RecyclerView.ViewHolder {
+
+        View activityView;
 
         @BindView(R.id.actName)
         public TextView actName;
@@ -78,8 +95,9 @@ public class ActivityPageAdapter extends RecyclerView.Adapter<ActivityPageAdapte
         public TextView actSite;
 
         //找到条目控件
-        public InnerHoder(@NonNull View itemView) {
+        public InnerHolder(@NonNull View itemView) {
             super(itemView);
+            activityView = itemView;
             ButterKnife.bind(this, itemView);
         }
 

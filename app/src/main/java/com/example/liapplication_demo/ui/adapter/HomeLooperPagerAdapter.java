@@ -12,6 +12,7 @@ import java.util.List;
 public class HomeLooperPagerAdapter extends PagerAdapter {
     private List<Integer> mPics = null;
 
+
     @Override
     public int getCount() {
         if (mPics != null) {

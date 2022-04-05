@@ -7,7 +7,7 @@ import java.util.List;
 public interface ICategoryPagerCallback {
 
     /**
-     * 数据加载回来
+     * 商品数据加载回来
      * @param commodities
      */
     void onContentLoaded(List<Commodities.DataBean> commodities);

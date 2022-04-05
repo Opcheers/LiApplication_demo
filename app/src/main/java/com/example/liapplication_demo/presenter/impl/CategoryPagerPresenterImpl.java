@@ -53,22 +53,26 @@ public class CategoryPagerPresenterImpl implements ICategoryPagerPresenter {
         LogUtils.d(CategoryPagerPresenterImpl.this, "shop pager url --> " + shopPagerUrl);
 
         Call<Commodities> task = api.getCommoditiesByCategory(shopPagerUrl);
+
         task.enqueue(new Callback<Commodities>() {
             @Override
             public void onResponse(Call<Commodities> call, Response<Commodities> response) {
                 int code = response.code();
                 LogUtils.d(CategoryPagerPresenterImpl.this, "code --> " + code);
                 if (code == HttpURLConnection.HTTP_OK) {
+                    //请求成功
                     Commodities commodities = response.body();
                     LogUtils.d(CategoryPagerPresenterImpl.this, "commodities --> " + commodities.toString());
                     //更新UI
                     handleShopPagerContentResult(commodities, categoryId);
                 } else {
+                    //请求失败
                     handlerNetworkError(categoryId);
                 }
             }
             @Override
             public void onFailure(Call<Commodities> call, Throwable t) {
+                //请求错误
                 LogUtils.d(CategoryPagerPresenterImpl.this, "onFailure --> " + t.toString());
             }
         });
@@ -90,7 +94,7 @@ public class CategoryPagerPresenterImpl implements ICategoryPagerPresenter {
             if (commodities == null || commodities.getData().size() == 0) {
                 callback.onEmpty(categoryId);
             } else {
-                callback.onLoadMoreLoaded(commodities.getData(), categoryId);
+                callback.onContentLoaded(commodities.getData());
             }
         }
     }
