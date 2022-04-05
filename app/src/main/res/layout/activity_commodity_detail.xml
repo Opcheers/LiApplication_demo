@@ -77,29 +77,30 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textSize="20sp"
-                        android:text="@string/shop_num"></TextView>
+                        android:text="@string/shop_num"
+                        android:textColor="@color/black"
+                        android:textSize="20sp"></TextView>
 
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentRight="true"
                         android:background="@drawable/button_shape"
-                        android:showDividers="middle"
                         android:divider="@drawable/button_shape"
-                        android:orientation="horizontal">
+                        android:orientation="horizontal"
+                        android:showDividers="middle">
 
                         <TextView
                             android:id="@+id/SubButton"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:textSize="20sp"
-                            android:paddingRight="8dp"
                             android:paddingLeft="8dp"
-                            android:text="-"></TextView>
+                            android:paddingRight="8dp"
+                            android:text="-"
+                            android:textSize="20sp"></TextView>
 
                         <TextView
-                            android:layout_width="0.5dp"
+                            android:layout_width="1dp"
                             android:layout_height="match_parent"
                             android:background="@color/colorPrimary"></TextView>
 
@@ -107,13 +108,13 @@
                             android:id="@+id/CommodityNum"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:paddingRight="8dp"
                             android:paddingLeft="8dp"
-                            android:textSize="20sp"
-                            android:text="10"></TextView>
+                            android:paddingRight="8dp"
+                            android:text="10"
+                            android:textSize="20sp"></TextView>
 
                         <TextView
-                            android:layout_width="0.5dp"
+                            android:layout_width="1dp"
                             android:layout_height="match_parent"
                             android:background="@color/colorPrimary"></TextView>
 
@@ -121,19 +122,18 @@
                             android:id="@+id/SubButton"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:paddingRight="8dp"
-                            android:textSize="20sp"
                             android:paddingLeft="8dp"
-                            android:text="+"></TextView>
+                            android:paddingRight="8dp"
+                            android:text="+"
+                            android:textSize="20sp"></TextView>
 
                     </LinearLayout>
-
                 </RelativeLayout>
 
                 <!--       分割线         -->
                 <TextView
                     android:layout_width="match_parent"
-                    android:layout_height="0.5dp"
+                    android:layout_height="1dp"
                     android:background="@color/colorPrimary"></TextView>
 
                 <RelativeLayout
@@ -145,29 +145,41 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="配送区域"
+                        android:textColor="@color/black"
                         android:textSize="20sp"></TextView>
                 </RelativeLayout>
 
                 <TextView
                     android:layout_width="match_parent"
-                    android:layout_height="0.5dp"
+                    android:layout_height="1dp"
                     android:background="@color/colorPrimary"></TextView>
 
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:gravity="center_vertical">
+                    android:layout_height="50dp">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textSize="20sp"
-                        android:text="@string/customName"></TextView>
+                        android:layout_centerVertical="true"
+                        android:text="@string/customName"
+                        android:textColor="@color/black"
+                        android:textSize="20sp"></TextView>
 
                     <EditText
-                        android:layout_width="200dp"
-                        android:layout_height="wrap_content"></EditText>
+                        android:layout_width="150dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:background="@color/white"
+                        android:textSize="20sp"
+                        android:hint=""></EditText>
                 </RelativeLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/colorPrimary"></TextView>
 
             </LinearLayout>
 

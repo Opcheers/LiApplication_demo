@@ -9,11 +9,8 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.liapplication_demo.R;
-<<<<<<< HEAD
 import com.example.liapplication_demo.iCubeNetService.NetService;
-=======
 import com.example.liapplication_demo.base.BaseActivity;
->>>>>>> ea6dd1f8b23e664ac7c349c9159d1daf3264a07c
 
 import java.io.File;
 import java.io.FileOutputStream;

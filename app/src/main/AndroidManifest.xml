@@ -19,7 +19,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-<<<<<<< HEAD
         <activity android:name=".ui.activity.MainActivity" />
         <activity android:name=".ui.activity.HomeActivity">
 <!--            <intent-filter>-->
@@ -27,11 +26,9 @@
 <!--                <category android:name="android.intent.category.LAUNCHER" />-->
 <!--            </intent-filter>-->
         </activity>
-=======
         <activity android:name=".ui.activity.ActivityDetailActivity"/>
         <activity android:name=".ui.activity.ActivityOrderActivity"/>
         <activity android:name=".ui.activity.ActivityAddVistorActivity"/>
->>>>>>> ea6dd1f8b23e664ac7c349c9159d1daf3264a07c
     </application>
 
 </manifest>
