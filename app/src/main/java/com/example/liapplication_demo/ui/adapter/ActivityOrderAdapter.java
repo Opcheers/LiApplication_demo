@@ -9,7 +9,6 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.liapplication_demo.R;
-import com.example.liapplication_demo.utils.LogUtils;
 
 import java.util.ArrayList;
 
@@ -19,7 +18,7 @@ import butterknife.ButterKnife;
 public class ActivityOrderAdapter extends RecyclerView.Adapter<ActivityOrderAdapter.InnerHolder> {
 
     ArrayList<String> mActDate = new ArrayList<>();
-    int mActPrice;
+    double mActPrice;
 
     @NonNull
     @Override
@@ -38,18 +37,19 @@ public class ActivityOrderAdapter extends RecyclerView.Adapter<ActivityOrderAdap
     @Override
     public int getItemCount() {
         if (mActDate != null) {
-            LogUtils.d(ActivityOrderAdapter.this, "getItemCount --> " + mActDate.size());
             return mActDate.size();
         }
         return 0;
     }
 
-    public void setData(ArrayList<String> actDate, int actPrice) {
+    public void setData(ArrayList<String> actDate, double actPrice) {
         mActDate.clear();
         mActDate.addAll(actDate);
         mActPrice = actPrice;
         notifyDataSetChanged();
     }
+
+
 
     public class InnerHolder extends RecyclerView.ViewHolder {
 

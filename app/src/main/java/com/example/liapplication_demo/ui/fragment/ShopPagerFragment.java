@@ -26,6 +26,7 @@ public class ShopPagerFragment extends BaseFragment implements ICategoryPagerCal
         bundle.putInt(Constants.KEY_SHOP_PAGER_MATERIAL_ID, categories.getId());
         bundle.putString(Constants.KEY_SHOP_PAGER_TITLE, categories.getTitle());
         shopPagerFragment.setArguments(bundle);
+
         return shopPagerFragment;
     }
 

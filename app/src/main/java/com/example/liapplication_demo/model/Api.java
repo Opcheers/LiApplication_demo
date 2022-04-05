@@ -21,4 +21,5 @@ public interface Api {
 
     @GET
     Call<FarmActivities> getActivityDetailById(@Url String url);
+
 }

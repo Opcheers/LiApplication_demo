@@ -64,15 +64,18 @@ public class ActivityDetailActivity extends BaseActivity  {
         actPrice.setText("￥"+mfarmActivity.getActPrice());
         Glide.with(this).load(mfarmActivity.getActPreview()).into(actPreview);
         //设置icon
-        for (int i = 0; i < mfarmActivity.getActIcon().size(); i++) {
-            ImageView icon = new ImageView(this);
-            LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, 400);
-            Glide.with(this).load(mfarmActivity.getActIcon().get(i)).into(icon);
-            icon.setScaleType(ImageView.ScaleType.FIT_XY);
-            icon.setPadding(0, 10, 0, 10);
-            icon.setLayoutParams(layoutParams);
-            actIconContainer.addView(icon);
+        if (mfarmActivity.getActIcon()!=null) {
+            for (int i = 0; i < mfarmActivity.getActIcon().size(); i++) {
+                ImageView icon = new ImageView(this);
+                LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, 400);
+                Glide.with(this).load(mfarmActivity.getActIcon().get(i)).into(icon);
+                icon.setScaleType(ImageView.ScaleType.FIT_XY);
+                icon.setPadding(0, 10, 0, 10);
+                icon.setLayoutParams(layoutParams);
+                actIconContainer.addView(icon);
+            }
         }
+
 
     }
 

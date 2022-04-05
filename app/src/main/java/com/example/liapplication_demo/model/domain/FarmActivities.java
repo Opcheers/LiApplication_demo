@@ -68,7 +68,7 @@ public class FarmActivities implements Serializable {
         private String actName;
         private int actStock;
         private String actSite;
-        private int actPrice;
+        private double actPrice;
         private String actDescription;
         private String actPreview;
         private int actPriority;
@@ -108,11 +108,11 @@ public class FarmActivities implements Serializable {
             this.actSite = actSite;
         }
 
-        public int getActPrice() {
+        public double getActPrice() {
             return actPrice;
         }
 
-        public void setActPrice(int actPrice) {
+        public void setActPrice(double actPrice) {
             this.actPrice = actPrice;
         }
 

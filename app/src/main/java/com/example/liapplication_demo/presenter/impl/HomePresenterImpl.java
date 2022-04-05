@@ -43,7 +43,7 @@ public class HomePresenterImpl implements IHomePresenter {
 
             @Override
             public void onFailure(Call<FarmActivities> call, Throwable t) {
-                LogUtils.d(HomePresenterImpl.this, "请求错误...");
+                LogUtils.d(HomePresenterImpl.this, "请求错误..."+t);
             }
         });
     }
