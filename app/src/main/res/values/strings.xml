@@ -32,6 +32,10 @@
         （3）全托管&#10;
     </string>
 
+    <string name="shop_buy">立即购买</string>
+    <string name="shop_num">已选数量</string>
+    <string name="customName">收货人姓名</string>
+
     <string name="user_et_search">搜索订单或班车路线</string>
     <string name="user_order">我的订单</string>
     <string name="user_farmland">我的农场</string>

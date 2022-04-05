@@ -2,8 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.liapplication_demo">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
-    
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/applogo_01"
@@ -11,16 +11,27 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.activity.MainActivity"></activity>
-        <activity android:name=".ui.activity.HomeActivity">
+        <activity
+            android:name=".ui.activity.CommodityDetail"
+            android:exported="true">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-                <category android:name="android.intent.category.LAUNCHER"/>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+<<<<<<< HEAD
+        <activity android:name=".ui.activity.MainActivity" />
+        <activity android:name=".ui.activity.HomeActivity">
+<!--            <intent-filter>-->
+<!--                <action android:name="android.intent.action.MAIN" />-->
+<!--                <category android:name="android.intent.category.LAUNCHER" />-->
+<!--            </intent-filter>-->
+        </activity>
+=======
         <activity android:name=".ui.activity.ActivityDetailActivity"/>
         <activity android:name=".ui.activity.ActivityOrderActivity"/>
         <activity android:name=".ui.activity.ActivityAddVistorActivity"/>
+>>>>>>> ea6dd1f8b23e664ac7c349c9159d1daf3264a07c
     </application>
 
 </manifest>
