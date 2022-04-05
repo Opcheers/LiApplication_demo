@@ -84,7 +84,7 @@ public class ActivityOrderVisitorAdapter extends RecyclerView.Adapter<ActivityOr
                     // 删除数据
                     notifyItemRemoved(pos);
 
-                    mContext.getPrice();
+                    mContext.setPrice();
                 }
             });
 
