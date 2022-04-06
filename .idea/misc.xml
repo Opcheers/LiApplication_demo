@@ -1,5 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/GitHub/LiApplication_demo/app/src/main/res/drawable/button_shape.xml" value="0.262" />
+        <entry key="..\:/GitHub/LiApplication_demo/app/src/main/res/drawable/myrect.xml" value="0.4295" />
+        <entry key="..\:/GitHub/LiApplication_demo/app/src/main/res/layout/activity_commodity_detail.xml" value="0.2672239108409321" />
+        <entry key="..\:/GitHub/LiApplication_demo/app/src/main/res/layout/activity_pay_order.xml" value="0.36820652173913043" />
+
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
@@ -21,6 +32,7 @@
         <entry key="..\:/project/LiApplication_demo/app/src/main/res/layout/fragment_home.xml" value="0.20081595648232095" />
         <entry key="..\:/project/LiApplication_demo/app/src/main/res/layout/fragment_shop.xml" value="0.1569046601111586" />
         <entry key="..\:/project/LiApplication_demo/app/src/main/res/layout/fragment_shop_pager.xml" value="0.1569046601111586" />
+
         <entry key="app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.1795" />
         <entry key="app/src/main/res/drawable/button_shape.xml" value="0.1175" />
         <entry key="app/src/main/res/drawable/selector_navigation_bar_color.xml" value="0.1795" />
@@ -33,8 +45,11 @@
       </map>
     </option>
   </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="11" project-jdk-type="JavaSDK">
+
   <component name="ExternalStorageConfigurationManager" enabled="true" />
   <component name="ProjectRootManager" version="2" languageLevel="JDK_15_PREVIEW" project-jdk-name="15" project-jdk-type="JavaSDK">
+
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">
