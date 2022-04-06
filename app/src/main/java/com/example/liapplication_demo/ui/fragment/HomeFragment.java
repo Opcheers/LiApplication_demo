@@ -17,6 +17,7 @@ import com.example.liapplication_demo.model.domain.FarmActivities;
 import com.example.liapplication_demo.presenter.IHomePresenter;
 import com.example.liapplication_demo.presenter.impl.HomePresenterImpl;
 import com.example.liapplication_demo.ui.activity.ActivityDetailActivity;
+import com.example.liapplication_demo.ui.activity.FarmlandActivity;
 import com.example.liapplication_demo.ui.adapter.HomeLooperPagerAdapter;
 import com.example.liapplication_demo.view.IHomeCallback;
 
@@ -42,6 +43,8 @@ public class HomeFragment extends BaseFragment implements IHomeCallback, ViewPag
     public ImageView mActPreview;
     @BindView(R.id.home_top_activity)
     public CardView topActivity;
+    @BindView(R.id.farmland)
+    public LinearLayout mFarmland;
 
     private IHomePresenter mHomePresenter;
     private HomeLooperPagerAdapter mLooperPagerAdapter;
@@ -77,6 +80,19 @@ public class HomeFragment extends BaseFragment implements IHomeCallback, ViewPag
         //给topActivity cardview设置监听
         onTopActivityListener();
 
+        //给开心农场设置监听
+        onFarmlandListener();
+
+    }
+
+    private void onFarmlandListener() {
+        mFarmland.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), FarmlandActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     private void onTopActivityListener() {

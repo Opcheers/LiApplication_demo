@@ -46,8 +46,6 @@ public class ActivityPageAdapter extends RecyclerView.Adapter<ActivityPageAdapte
         });
 
 
-
-
         return new InnerHolder(itemView);
     }
 

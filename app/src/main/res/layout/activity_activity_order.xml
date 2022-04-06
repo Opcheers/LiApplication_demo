@@ -24,7 +24,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="15dp"
-            android:background="@drawable/shape_rounded_corners_without_shadows"
+            android:background="@drawable/shape_rounded_corners_with_white"
             android:orientation="vertical">
 
             <TextView

@@ -20,7 +20,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@id/title"
-        android:background="@drawable/shape_rounded_corners_with_backcolor">
+        android:background="@drawable/shape_rounded_corners_with_grey">
 
         <LinearLayout
             android:layout_width="match_parent"

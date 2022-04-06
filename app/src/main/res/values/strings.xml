@@ -54,6 +54,22 @@
     <string name="text_farm_acticity_introdution_title">- - - - - - 活动介绍 - - - - - -</string>
     <string name="tips_add_visitor_name_et">请输入真实姓名</string>
     <string name="tips_add_visitor_id_et">用于身份校验，请准确填写</string>
+    <string name="title_farmland">租赁介绍</string>
+    <string name="text_farmland_lease_btn">我要租地</string>
+    <string name="text_farmland_mine_btn">已有土地</string>
+    <string name="title_select_farmland">选择土地</string>
 
+    <string-array name="group">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+    </string-array>
+    <string-array name="farmland">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+    </string-array>
 
 </resources>
