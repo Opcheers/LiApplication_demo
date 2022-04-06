@@ -58,6 +58,9 @@ public class ActivityOrderActivity extends BaseActivity {
 
         //加载dateListView
         loadDateListView();
+
+        //加载visitorListView
+        loadVisitorListView();
     }
 
 
@@ -81,21 +84,6 @@ public class ActivityOrderActivity extends BaseActivity {
             }
         });
 
-        //创建适配器,加载数据
-        mVisitorAdapter = new ActivityOrderVisitorAdapter(this);
-        mVisitorList.setAdapter(mVisitorAdapter);
-    }
-
-    public void getPrice() {
-        mTotalPriceNum = mActPrice * mVisitorData.size();
-        mTotalPrice.setText("总额：￥" + String.format("%.2f", mTotalPriceNum));
-    }
-
-    @Override
-    public void onResume() {
-        super.onResume();
-        mTotalPriceNum = mActPrice * mVisitorData.size();
-        mTotalPrice.setText("总额：￥" + String.format("%.2f", mTotalPriceNum));
     }
 
 
@@ -131,7 +119,7 @@ public class ActivityOrderActivity extends BaseActivity {
 
 
     /**
-     * 添加或删除游客信息时都要重新加载VistorListView
+     * 加载VistorListView
      */
     private void loadVisitorListView() {
         //设置布局管理器
@@ -139,12 +127,19 @@ public class ActivityOrderActivity extends BaseActivity {
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         mVisitorList.setLayoutManager(layoutManager);
 
-        LogUtils.d(this, "loadVisitorListView visitors --> "+mVisitorData.toString());
+        mVisitorAdapter = new ActivityOrderVisitorAdapter(this);
+        mVisitorList.setAdapter(mVisitorAdapter);
+        mVisitorAdapter.setData(mVisitorData);
+
+        setPrice();
+    }
+
+
+    public void setPrice() {
         mTotalPriceNum = mActPrice * mVisitorData.size();
         mTotalPrice.setText("总额：￥" + String.format("%.2f", mTotalPriceNum));
-
-        mVisitorAdapter.setData(mVisitorData);
     }
+
 
 
 }

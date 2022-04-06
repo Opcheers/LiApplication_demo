@@ -10,7 +10,7 @@ import retrofit2.http.Url;
 public interface Api {
 
     //TODO
-    @GET("activity/findAll")
+    @GET("activity/findTop")
     Call<FarmActivities> getTopActivity();
 
     @GET("activity/findAll")

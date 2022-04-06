@@ -3,8 +3,10 @@ package com.example.liapplication_demo.ui.activity;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
 import android.view.View;
 import android.widget.RadioButton;
+
 
 import com.example.liapplication_demo.R;
 
@@ -16,8 +18,6 @@ public class PayOrder extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_pay_order);
-
         alipayButton = findViewById(R.id.alipay_button);
         wx_payButton = findViewById(R.id.wx_button);
 

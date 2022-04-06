@@ -10,7 +10,6 @@ import com.example.liapplication_demo.model.domain.Commodities;
 import com.example.liapplication_demo.presenter.ICategoryPagerPresenter;
 import com.example.liapplication_demo.presenter.impl.CategoryPagerPresenterImpl;
 import com.example.liapplication_demo.utils.Constants;
-import com.example.liapplication_demo.utils.LogUtils;
 import com.example.liapplication_demo.view.ICategoryPagerCallback;
 
 import java.util.List;
@@ -54,8 +53,8 @@ public class ShopPagerFragment extends BaseFragment implements ICategoryPagerCal
         String title = arguments.getString(Constants.KEY_SHOP_PAGER_TITLE);
         int materialId = arguments.getInt(Constants.KEY_SHOP_PAGER_MATERIAL_ID);
 
-        LogUtils.d(this, " title --> " + title);
-        LogUtils.d(this, " materialId --> " + materialId);
+        // LogUtils.d(this, " title --> " + title);
+        // LogUtils.d(this, " materialId --> " + materialId);
 
         //加载数据
         if (mCategoryPagerPresenter != null) {
@@ -65,8 +64,9 @@ public class ShopPagerFragment extends BaseFragment implements ICategoryPagerCal
 
     @Override
     public void onContentLoaded(List<Commodities.DataBean> commodities) {
+        // 数据列表加载
+        // TODO：
         //数据列表加载
-
     }
 
     @Override

@@ -1,11 +1,13 @@
 package com.example.liapplication_demo.ui.fragment;
 
+import android.util.Log;
 import android.view.View;
 
 import androidx.viewpager.widget.ViewPager;
 
 import com.example.liapplication_demo.R;
 import com.example.liapplication_demo.base.BaseFragment;
+import com.example.liapplication_demo.iCubeNetService.NetService;
 import com.example.liapplication_demo.model.domain.Categories;
 import com.example.liapplication_demo.presenter.impl.ShopPresenterImpl;
 import com.example.liapplication_demo.ui.adapter.ShopPagerAdapter;
@@ -34,7 +36,6 @@ public class ShopFragment extends BaseFragment implements IShopCallback {
 
     @Override
     protected void initView(View rootView) {
-
         //TabLayout绑定ViewPager
         mTabLayout.setupWithViewPager(mViewPager);
 
@@ -43,6 +44,10 @@ public class ShopFragment extends BaseFragment implements IShopCallback {
         mViewPager.setAdapter(mShopPagerAdapter);
     }
 
+
+    /**
+     * get URL Data
+     */
     @Override
     protected void initPresenter() {
         //创建Presenter

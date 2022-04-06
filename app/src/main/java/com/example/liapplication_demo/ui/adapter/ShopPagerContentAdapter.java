@@ -23,6 +23,10 @@ public class ShopPagerContentAdapter extends RecyclerView.Adapter<ShopPagerConte
 
     List<Commodities.DataBean> mData = new ArrayList<>();
 
+    private void getNetData() {
+
+    }
+
     @NonNull
     @Override
     public InnerHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -42,12 +46,6 @@ public class ShopPagerContentAdapter extends RecyclerView.Adapter<ShopPagerConte
             return mData.size();
         }
         return 0;
-    }
-
-    public void setCommodities(List<Commodities.DataBean> commodities) {
-        mData.clear();
-        mData.addAll(commodities);
-        notifyDataSetChanged();
     }
 
     public class InnerHolder extends RecyclerView.ViewHolder {
@@ -75,7 +73,6 @@ public class ShopPagerContentAdapter extends RecyclerView.Adapter<ShopPagerConte
             comStock.setText("库存"+dataBean.getComStock());
             paidNum.setText(dataBean.getPaidNum()+"人付款");
             Glide.with(itemView.getContext()).load(dataBean.getComPreview()).into(comPreview);
-
         }
     }
 }
