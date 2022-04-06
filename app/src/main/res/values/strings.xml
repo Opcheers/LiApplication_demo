@@ -32,11 +32,15 @@
         （3）全托管&#10;
     </string>
 
+
     <string name="shop_buy">立即购买</string>
     <string name="shop_num">已选数量</string>
     <string name="customName">收货人姓名：</string>
     <string name="customPhoneNumber">收货人电话：</string>
     <string name="customAddress">收货人地址：</string>
+    <string name="pay">确认支付</string>
+    <string name="alipay">支付宝支付</string>
+    <string name="wx_pay">微信支付</string>
 
     <string name="user_et_search">搜索订单或班车路线</string>
     <string name="user_order">我的订单</string>
