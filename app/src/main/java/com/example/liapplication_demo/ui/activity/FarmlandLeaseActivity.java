@@ -1,6 +1,7 @@
 package com.example.liapplication_demo.ui.activity;
 
 
+import android.widget.Button;
 import android.widget.Spinner;
 
 import com.example.liapplication_demo.R;
@@ -10,14 +11,33 @@ import butterknife.BindView;
 
 public class FarmlandLeaseActivity extends BaseActivity {
 
-    @BindView(R.id.group)
+    @BindView(R.id.group_id)
     public Spinner mGroupSpinner;
+    @BindView(R.id.farmland_lease_next_btn)
+    public Button mNext;
 
     @Override
     protected void initView() {
 
-        //todo
+        initAdapter();
+        initPresenter();
     }
+
+
+    /**
+     * 设置适配器
+     */
+    private void initAdapter() {
+
+    }
+
+
+    /**
+     * 设置presenter
+     */
+    private void initPresenter() {
+    }
+
 
     @Override
     protected int getLayoutResId() {

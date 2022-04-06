@@ -11,6 +11,7 @@ import com.example.liapplication_demo.view.ICategoryPagerCallback;
 import java.net.HttpURLConnection;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import retrofit2.Call;
@@ -39,7 +40,9 @@ public class CategoryPagerPresenterImpl implements ICategoryPagerPresenter {
     public void getContentByCategory(String categoryTitle, int categoryId) {
 
         for (ICategoryPagerCallback callback : callbacks) {
-            callback.onLoading(categoryId);
+            if (callback.getCategoryId() == categoryId) {
+                callback.onLoading();
+            }
         }
         //根据分类加载内容
         Retrofit retrofit = RetrofitManager.getInstance().getRetrofit();
@@ -74,13 +77,17 @@ public class CategoryPagerPresenterImpl implements ICategoryPagerPresenter {
             public void onFailure(Call<Commodities> call, Throwable t) {
                 //请求错误
                 LogUtils.d(CategoryPagerPresenterImpl.this, "onFailure --> " + t.toString());
+                handlerNetworkError(categoryId);
             }
         });
     }
 
     private void handlerNetworkError(int categoryId) {
         for (ICategoryPagerCallback callback : callbacks){
-            callback.onNetworkError(categoryId);
+            if (callback.getCategoryId() == categoryId) {
+                callback.onError();
+
+            }
         }
     }
 
@@ -91,10 +98,12 @@ public class CategoryPagerPresenterImpl implements ICategoryPagerPresenter {
      */
     private void handleShopPagerContentResult(Commodities commodities, int categoryId) {
         for (ICategoryPagerCallback callback : callbacks){
-            if (commodities == null || commodities.getData().size() == 0) {
-                callback.onEmpty(categoryId);
-            } else {
-                callback.onContentLoaded(commodities.getData());
+            if (callback.getCategoryId() == categoryId) {
+                if (commodities == null || commodities.getData().size() == 0) {
+                    callback.onEmpty();
+                } else {
+                    callback.onContentLoaded(commodities.getData());
+                }
             }
         }
     }
@@ -109,7 +118,7 @@ public class CategoryPagerPresenterImpl implements ICategoryPagerPresenter {
 
     }
 
-    private ArrayList<ICategoryPagerCallback> callbacks = new ArrayList<>();
+    private List<ICategoryPagerCallback> callbacks = new ArrayList<>();
     @Override
     public void registerCallback(ICategoryPagerCallback callback) {
         if (!callbacks.contains(callback)) {

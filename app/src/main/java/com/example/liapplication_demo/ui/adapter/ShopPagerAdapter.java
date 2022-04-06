@@ -7,18 +7,13 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
 import com.example.liapplication_demo.model.domain.Categories;
-import com.example.liapplication_demo.model.domain.Commodities;
 import com.example.liapplication_demo.ui.fragment.ShopPagerFragment;
 import com.example.liapplication_demo.utils.LogUtils;
-import com.example.liapplication_demo.utils.RetrofitManager;
-import com.example.liapplication_demo.view.ICategoryPagerCallback;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import retrofit2.Retrofit;
-
-public class ShopPagerAdapter extends FragmentPagerAdapter implements ICategoryPagerCallback {
+public class ShopPagerAdapter extends FragmentPagerAdapter {
 
     private List<Categories> mCategoryList = new ArrayList<>();
 
@@ -52,39 +47,5 @@ public class ShopPagerAdapter extends FragmentPagerAdapter implements ICategoryP
         mCategoryList.clear();
         mCategoryList.addAll(categories);
         notifyDataSetChanged();
-    }
-
-    @Override
-    public void onContentLoaded(List<Commodities.DataBean> commodities) {
-    }
-
-    @Override
-    public void onNetworkError(int categoryId) {
-
-    }
-
-    @Override
-    public void onLoading(int categoryId) {
-
-    }
-
-    @Override
-    public void onEmpty(int categoryId) {
-
-    }
-
-    @Override
-    public void onLoadMoreError(int categoryId) {
-
-    }
-
-    @Override
-    public void onLoadMoreEmpty(int categotyId) {
-
-    }
-
-    @Override
-    public void onLoadMoreLoaded(List<Commodities.DataBean> commodities, int categoryId) {
-
     }
 }

@@ -73,7 +73,7 @@ public class ShopFragment extends BaseFragment implements IShopCallback {
     }
 
     @Override
-    public void onNetworkError() {
+    public void onError() {
         setUpStates(State.ERROR);
     }
 

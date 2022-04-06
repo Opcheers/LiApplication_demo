@@ -60,18 +60,7 @@
     <string name="text_farmland_lease_btn">我要租地</string>
     <string name="text_farmland_mine_btn">已有土地</string>
     <string name="title_select_farmland">选择土地</string>
+    <string name="title_lease_mode">租赁模式</string>
 
-    <string-array name="group">
-        <item>1</item>
-        <item>2</item>
-        <item>3</item>
-    </string-array>
-    <string-array name="farmland">
-        <item>1</item>
-        <item>2</item>
-        <item>3</item>
-        <item>4</item>
-        <item>5</item>
-    </string-array>
 
 </resources>

@@ -3,20 +3,31 @@ package com.example.liapplication_demo.ui.fragment;
 import android.os.Bundle;
 import android.view.View;
 
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.StaggeredGridLayoutManager;
+
 import com.example.liapplication_demo.R;
 import com.example.liapplication_demo.base.BaseFragment;
 import com.example.liapplication_demo.model.domain.Categories;
 import com.example.liapplication_demo.model.domain.Commodities;
 import com.example.liapplication_demo.presenter.ICategoryPagerPresenter;
 import com.example.liapplication_demo.presenter.impl.CategoryPagerPresenterImpl;
+import com.example.liapplication_demo.ui.adapter.ShopPagerContentAdapter;
 import com.example.liapplication_demo.utils.Constants;
 import com.example.liapplication_demo.view.ICategoryPagerCallback;
 
 import java.util.List;
 
+import butterknife.BindView;
+
 public class ShopPagerFragment extends BaseFragment implements ICategoryPagerCallback {
 
+    @BindView(R.id.ShopList)
+    public RecyclerView mShopList;
+
     private ICategoryPagerPresenter mCategoryPagerPresenter;
+    private int mMaterialId;
+    private ShopPagerContentAdapter mAdapter;
 
     public static ShopPagerFragment newInstance(Categories categories){
         ShopPagerFragment shopPagerFragment = new ShopPagerFragment();
@@ -36,8 +47,12 @@ public class ShopPagerFragment extends BaseFragment implements ICategoryPagerCal
 
     @Override
     protected void initView(View rootView) {
-        setUpStates(State.SUCCESS);
+        //设置布局管理器
+        mShopList.setLayoutManager(new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL));
 
+        //创建适配器
+        mAdapter = new ShopPagerContentAdapter();
+        mShopList.setAdapter(mAdapter);
     }
 
     @Override
@@ -51,53 +66,50 @@ public class ShopPagerFragment extends BaseFragment implements ICategoryPagerCal
     protected void loadData() {
         Bundle arguments = getArguments();
         String title = arguments.getString(Constants.KEY_SHOP_PAGER_TITLE);
-        int materialId = arguments.getInt(Constants.KEY_SHOP_PAGER_MATERIAL_ID);
-
-        // LogUtils.d(this, " title --> " + title);
-        // LogUtils.d(this, " materialId --> " + materialId);
+        mMaterialId = arguments.getInt(Constants.KEY_SHOP_PAGER_MATERIAL_ID);
 
         //加载数据
         if (mCategoryPagerPresenter != null) {
-            mCategoryPagerPresenter.getContentByCategory(title, materialId);
+            mCategoryPagerPresenter.getContentByCategory(title, mMaterialId);
         }
     }
 
     @Override
     public void onContentLoaded(List<Commodities.DataBean> commodities) {
         // 数据列表加载
-        // TODO：
-        //数据列表加载
+        mAdapter.setData(commodities);
+        setUpStates(State.SUCCESS);
     }
 
+    /**
+     * 网络错误
+     */
     @Override
-    public void onNetworkError(int categoryId) {
+    public void onError() {
         setUpStates(State.ERROR);
     }
 
+    /**
+     * 加载界面
+     */
     @Override
-    public void onLoading(int categoryId) {
+    public void onLoading() {
         setUpStates(State.LOADING);
     }
 
+    /**
+     * 空界面
+     */
     @Override
-    public void onEmpty(int categoryId) {
+    public void onEmpty() {
         setUpStates(State.EMPTY);
     }
 
     @Override
-    public void onLoadMoreError(int categoryId) {
-
+    public int getCategoryId() {
+        return mMaterialId;
     }
 
-    @Override
-    public void onLoadMoreEmpty(int categotyId) {
-
-    }
-
-    @Override
-    public void onLoadMoreLoaded(List<Commodities.DataBean> commodities, int categoryId) {
-
-    }
 
     @Override
     protected void release() {

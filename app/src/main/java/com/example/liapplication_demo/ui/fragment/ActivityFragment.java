@@ -42,8 +42,6 @@ public class ActivityFragment extends BaseFragment implements IFarmActivitiesCal
         mAdapter = new ActivityPageAdapter();
         mList.setAdapter(mAdapter);
 
-
-
     }
 
 
@@ -71,7 +69,7 @@ public class ActivityFragment extends BaseFragment implements IFarmActivitiesCal
     }
 
     @Override
-    public void onNetworkError() {
+    public void onError() {
         setUpStates(State.ERROR);
     }
 
