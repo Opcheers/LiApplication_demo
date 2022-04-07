@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.example.liapplication_demo">
 
     <uses-permission android:name="android.permission.INTERNET" />
@@ -11,6 +12,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
         <activity android:name=".ui.activity.CommodityDetail"/>
         <activity
             android:name=".ui.activity.PayOrder"
@@ -31,9 +33,6 @@
         <activity android:name=".ui.activity.FarmlandActivity" />
         <activity android:name=".ui.activity.FarmlandMineAcitivty" />
         <activity android:name=".ui.activity.FarmlandLeaseActivity" />
-
-        <activity android:name=".ui.activity.PayOrder" />
-        <activity android:name=".ui.activity.CommodityDetail" />
     </application>
 
 </manifest>
