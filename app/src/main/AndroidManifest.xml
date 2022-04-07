@@ -31,6 +31,9 @@
         <activity android:name=".ui.activity.FarmlandActivity" />
         <activity android:name=".ui.activity.FarmlandMineAcitivty" />
         <activity android:name=".ui.activity.FarmlandLeaseActivity" />
+
+        <activity android:name=".ui.activity.PayOrder" />
+        <activity android:name=".ui.activity.CommodityDetail" />
     </application>
 
 </manifest>
