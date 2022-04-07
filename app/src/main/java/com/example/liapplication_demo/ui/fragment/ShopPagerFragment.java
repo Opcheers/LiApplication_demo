@@ -1,5 +1,6 @@
 package com.example.liapplication_demo.ui.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
@@ -12,6 +13,7 @@ import com.example.liapplication_demo.model.domain.Categories;
 import com.example.liapplication_demo.model.domain.Commodities;
 import com.example.liapplication_demo.presenter.ICategoryPagerPresenter;
 import com.example.liapplication_demo.presenter.impl.CategoryPagerPresenterImpl;
+import com.example.liapplication_demo.ui.activity.ShopCommodityDetailActivity;
 import com.example.liapplication_demo.ui.adapter.ShopPagerContentAdapter;
 import com.example.liapplication_demo.utils.Constants;
 import com.example.liapplication_demo.view.ICategoryPagerCallback;
@@ -20,7 +22,7 @@ import java.util.List;
 
 import butterknife.BindView;
 
-public class ShopPagerFragment extends BaseFragment implements ICategoryPagerCallback {
+public class ShopPagerFragment extends BaseFragment implements ICategoryPagerCallback, ShopPagerContentAdapter.OnStaggerItemClickListener {
 
     @BindView(R.id.ShopList)
     public RecyclerView mShopList;
@@ -48,11 +50,19 @@ public class ShopPagerFragment extends BaseFragment implements ICategoryPagerCal
     @Override
     protected void initView(View rootView) {
         //设置布局管理器
-        mShopList.setLayoutManager(new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL));
+        StaggeredGridLayoutManager layoutManager = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
+        mShopList.setLayoutManager(layoutManager);
 
         //创建适配器
         mAdapter = new ShopPagerContentAdapter();
         mShopList.setAdapter(mAdapter);
+
+    }
+
+    @Override
+    protected void initEvent() {
+        //给适配器设置监听
+        mAdapter.setOnStaggerItemClickListener(this);
     }
 
     @Override
@@ -116,6 +126,17 @@ public class ShopPagerFragment extends BaseFragment implements ICategoryPagerCal
         if (mCategoryPagerPresenter != null) {
             mCategoryPagerPresenter.unregisterCallback(this);
         }
+    }
+
+    @Override
+    public void onItemClickListener(Commodities.DataBean item) {
+        //点击时跳转到商品详情
+
+        Intent intent = new Intent(getActivity(), ShopCommodityDetailActivity.class);
+        Bundle bundle = new Bundle();
+        bundle.putSerializable("commodity", item);
+        intent.putExtras(bundle);
+        startActivity(intent);
     }
 }
 

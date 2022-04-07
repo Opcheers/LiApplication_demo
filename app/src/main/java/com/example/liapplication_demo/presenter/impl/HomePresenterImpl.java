@@ -19,6 +19,10 @@ public class HomePresenterImpl implements IHomePresenter {
 
     @Override
     public void getTopActivity() {
+
+        if (mCallback != null) {
+            mCallback.onLoading();
+        }
         //加载推荐活动数据
         Retrofit retrofit = RetrofitManager.getInstance().getRetrofit();
         Api api = retrofit.create(Api.class);
@@ -38,12 +42,14 @@ public class HomePresenterImpl implements IHomePresenter {
                 } else {
                     //请求失败
                     LogUtils.d(HomePresenterImpl.this, "请求失败...");
+                    mCallback.onError();
                 }
             }
 
             @Override
             public void onFailure(Call<FarmActivities> call, Throwable t) {
                 LogUtils.d(HomePresenterImpl.this, "请求错误..."+t);
+                mCallback.onError();
             }
         });
     }
@@ -52,7 +58,6 @@ public class HomePresenterImpl implements IHomePresenter {
     public void registerCallback(IHomeCallback callback) {
         //通知ui
         this.mCallback = callback;
-
     }
 
     @Override

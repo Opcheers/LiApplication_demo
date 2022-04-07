@@ -22,6 +22,7 @@ import butterknife.ButterKnife;
 public class ShopPagerContentAdapter extends RecyclerView.Adapter<ShopPagerContentAdapter.InnerHolder> {
 
     List<Commodities.DataBean> mData = new ArrayList<>();
+    private OnStaggerItemClickListener mItemClickListener = null;
 
     @NonNull
     @Override
@@ -34,6 +35,14 @@ public class ShopPagerContentAdapter extends RecyclerView.Adapter<ShopPagerConte
     public void onBindViewHolder(@NonNull InnerHolder holder, int position) {
         Commodities.DataBean dataBean = mData.get(position);
         holder.setData(dataBean);
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (mItemClickListener != null) {
+                    mItemClickListener.onItemClickListener(dataBean);
+                }
+            }
+        });
     }
 
     @Override
@@ -76,5 +85,12 @@ public class ShopPagerContentAdapter extends RecyclerView.Adapter<ShopPagerConte
             paidNum.setText(dataBean.getPaidNum()+"人付款");
             Glide.with(itemView.getContext()).load(dataBean.getComPreview()).into(comPreview);
         }
+    }
+    public void setOnStaggerItemClickListener(OnStaggerItemClickListener listener){
+        this.mItemClickListener = listener;
+    }
+
+    public interface OnStaggerItemClickListener{
+        void onItemClickListener(Commodities.DataBean item);
     }
 }

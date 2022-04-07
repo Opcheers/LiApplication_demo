@@ -1,5 +1,7 @@
 package com.example.liapplication_demo.ui.fragment;
 
+import android.content.Intent;
+import android.os.Bundle;
 import android.view.View;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -9,14 +11,16 @@ import com.example.liapplication_demo.R;
 import com.example.liapplication_demo.base.BaseFragment;
 import com.example.liapplication_demo.model.domain.FarmActivities;
 import com.example.liapplication_demo.presenter.impl.ActivityPagePresenterImpl;
+import com.example.liapplication_demo.ui.activity.ActivityDetailActivity;
 import com.example.liapplication_demo.ui.adapter.ActivityPageAdapter;
+import com.example.liapplication_demo.utils.LogUtils;
 import com.example.liapplication_demo.view.IFarmActivitiesCallback;
 
 import java.util.List;
 
 import butterknife.BindView;
 
-public class ActivityFragment extends BaseFragment implements IFarmActivitiesCallback {
+public class ActivityFragment extends BaseFragment implements IFarmActivitiesCallback, ActivityPageAdapter.OnListItemClickListener {
 
     @BindView(R.id.farm_activity_list_view)
     public RecyclerView mList;
@@ -44,7 +48,11 @@ public class ActivityFragment extends BaseFragment implements IFarmActivitiesCal
 
     }
 
-
+    @Override
+    protected void initEvent() {
+        //适配器监听
+        mAdapter.setOnClickItemListener(this);
+    }
 
     @Override
     protected void initPresenter() {
@@ -92,6 +100,16 @@ public class ActivityFragment extends BaseFragment implements IFarmActivitiesCal
     }
 
 
+    @Override
+    public void onItemListener(FarmActivities.DataBean item) {
+        //列表内容被点击了
+        LogUtils.d(this, "item click --> " + item.toString());
 
-
+        //跳转到详情页面
+        Intent intent = new Intent(getActivity(), ActivityDetailActivity.class);
+        Bundle bundle = new Bundle();
+        bundle.putSerializable("activity", item);
+        intent.putExtras(bundle);
+        startActivity(intent);
+    }
 }

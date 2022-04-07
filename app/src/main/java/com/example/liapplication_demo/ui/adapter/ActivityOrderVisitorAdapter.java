@@ -51,8 +51,6 @@ public class ActivityOrderVisitorAdapter extends RecyclerView.Adapter<ActivityOr
     }
 
     public void setData(List<Visitor> visitorData) {
-//        mVisitors.clear();
-//        mVisitors.addAll(visitorData);
         mVisitors = (ArrayList)visitorData;
         notifyDataSetChanged();
     }

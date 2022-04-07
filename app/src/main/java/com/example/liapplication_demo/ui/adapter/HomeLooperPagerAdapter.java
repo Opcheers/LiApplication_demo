@@ -11,7 +11,7 @@ import java.util.List;
 
 public class HomeLooperPagerAdapter extends PagerAdapter {
     private List<Integer> mPics = null;
-
+    private OnLooperPagerItemClickListener mLooperItemListener = null;
 
     @Override
     public int getCount() {
@@ -31,6 +31,14 @@ public class HomeLooperPagerAdapter extends PagerAdapter {
         imageView.setPadding(10, 10, 10, 0);//图片边距
         //添加到容器中
         container.addView(imageView);
+
+        //设置监听
+        imageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mLooperItemListener.onLooperItemClick(realPosition);
+            }
+        });
         return imageView;
     }
 
@@ -58,5 +66,13 @@ public class HomeLooperPagerAdapter extends PagerAdapter {
 
     public void setPics(List<Integer> pics) {
         this.mPics = pics;
+    }
+
+    public void setOnLooperPagerItemClickListener(OnLooperPagerItemClickListener listener){
+        this.mLooperItemListener = listener;
+    }
+
+    public interface OnLooperPagerItemClickListener{
+        void onLooperItemClick(Integer loopId);
     }
 }

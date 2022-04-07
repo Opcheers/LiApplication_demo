@@ -5,7 +5,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -23,6 +22,7 @@ import butterknife.ButterKnife;
 public class ActivityPageAdapter extends RecyclerView.Adapter<ActivityPageAdapter.InnerHolder> {
 
     List<FarmActivities.DataBean> mData = new ArrayList<>();
+    private OnListItemClickListener mItemClickListener = null;
 
     /**
      * 找到控件，创建条目
@@ -34,21 +34,9 @@ public class ActivityPageAdapter extends RecyclerView.Adapter<ActivityPageAdapte
     @Override
     public InnerHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_list_view_farm_activity, parent, false);
-
-        final InnerHolder holder = new InnerHolder(itemView);
-
-        holder.activityView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                int position = holder.getAdapterPosition();
-                FarmActivities.DataBean activity = mData.get(position);
-                Toast.makeText(view.getContext(), "你点击的是" + activity.getActName(), Toast.LENGTH_SHORT).show();
-            }
-        });
-
-
         return new InnerHolder(itemView);
     }
+
 
     /**
      * 数据绑定
@@ -59,6 +47,14 @@ public class ActivityPageAdapter extends RecyclerView.Adapter<ActivityPageAdapte
     public void onBindViewHolder(@NonNull InnerHolder holder, int position) {
         FarmActivities.DataBean dataBean = mData.get(position);
         holder.setData(dataBean);
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (mItemClickListener != null) {
+                    mItemClickListener.onItemListener(dataBean);
+                }
+            }
+        });
     }
 
     /**
@@ -110,5 +106,13 @@ public class ActivityPageAdapter extends RecyclerView.Adapter<ActivityPageAdapte
             actSite.setText(""+dataBean.getActSite());
             Glide.with(itemView.getContext()).load(dataBean.getActPreview()).into(actPreview);
         }
+    }
+
+    public void setOnClickItemListener(OnListItemClickListener listener){
+        mItemClickListener = listener;
+    }
+
+    public interface OnListItemClickListener{
+        void onItemListener(FarmActivities.DataBean item);
     }
 }

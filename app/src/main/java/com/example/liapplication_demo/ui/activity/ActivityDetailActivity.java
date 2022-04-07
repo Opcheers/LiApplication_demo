@@ -38,8 +38,6 @@ public class ActivityDetailActivity extends BaseActivity  {
     @BindView(R.id.order_btn)
     public Button mOrderBtn;
 
-
-
     @Override
     protected int getLayoutResId() {
         return R.layout.activity_activity_detail;
@@ -50,7 +48,7 @@ public class ActivityDetailActivity extends BaseActivity  {
 
         //接收FarmActivities.DataBean
         Intent intent = getIntent();
-        mfarmActivity = (FarmActivities.DataBean) intent.getSerializableExtra("topActivity");
+        mfarmActivity = (FarmActivities.DataBean) intent.getSerializableExtra("activity");
         LogUtils.d(this, "mfarmActivity --> " + mfarmActivity.toString());
         //加载数据
 

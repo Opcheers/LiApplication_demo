@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.cardview.widget.CardView;
 import androidx.viewpager.widget.ViewPager;
@@ -26,7 +27,7 @@ import java.util.List;
 
 import butterknife.BindView;
 
-public class HomeFragment extends BaseFragment implements IHomeCallback, ViewPager.OnPageChangeListener {
+public class HomeFragment extends BaseFragment implements IHomeCallback, ViewPager.OnPageChangeListener, HomeLooperPagerAdapter.OnLooperPagerItemClickListener {
 
 
     @BindView(R.id.looper_pager)
@@ -77,12 +78,24 @@ public class HomeFragment extends BaseFragment implements IHomeCallback, ViewPag
         insertPoint();
         mLoopPager.setCurrentItem(sPics.size()*100, false);
 
+
+    }
+
+    @Override
+    protected void initEvent() {
         //给topActivity cardview设置监听
         onTopActivityListener();
 
         //给开心农场设置监听
         onFarmlandListener();
 
+        //给轮播图设置监听
+        onLooperPagerListener();
+
+    }
+
+    private void onLooperPagerListener() {
+        mLooperPagerAdapter.setOnLooperPagerItemClickListener(this);
     }
 
     private void onFarmlandListener() {
@@ -102,7 +115,7 @@ public class HomeFragment extends BaseFragment implements IHomeCallback, ViewPag
             public void onClick(View view) {
                 Intent intent = new Intent(getActivity(), ActivityDetailActivity.class);
                 Bundle bundle = new Bundle();
-                bundle.putSerializable("topActivity", mTopActivity);
+                bundle.putSerializable("activity", mTopActivity);
                 intent.putExtras(bundle);
                 startActivity(intent);
             }
@@ -181,9 +194,8 @@ public class HomeFragment extends BaseFragment implements IHomeCallback, ViewPag
 
     @Override
     public void onTopActivityLoaded(List<FarmActivities.DataBean> farmActivities) {
-
+        setUpStates(State.SUCCESS);
         mTopActivity = farmActivities.get(0);
-
         //加载数据从这里回来,直接设置
         mActId = farmActivities.get(0).getActId();
         mActName.setText(farmActivities.get(0).getActName());
@@ -193,4 +205,33 @@ public class HomeFragment extends BaseFragment implements IHomeCallback, ViewPag
     }
 
 
+    @Override
+    public void onLooperItemClick(Integer loopId) {
+        //轮播图被点击了，这里能拿到ID
+        switch (loopId){
+            case 0:
+                //跳转到开心农场
+                Intent intent = new Intent(getActivity(), FarmlandActivity.class);
+                startActivity(intent);
+                break;
+            case 1:
+                //跳转到字画列表
+                Toast.makeText(getContext(), "跳转到字画", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    @Override
+    public void onError() {
+        setUpStates(State.ERROR);
+    }
+
+    @Override
+    public void onLoading() {
+        setUpStates(State.LOADING);
+    }
+
+    @Override
+    public void onEmpty() {
+        setUpStates(State.EMPTY);
+    }
 }

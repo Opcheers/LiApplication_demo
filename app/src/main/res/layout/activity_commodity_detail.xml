@@ -41,7 +41,7 @@
                 android:paddingBottom="10dp">
 
                 <TextView
-                    android:id="@+id/CommodityPrice"
+                    android:id="@+id/price"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="5dp"
@@ -50,7 +50,7 @@
                     android:textSize="20sp"></TextView>
 
                 <TextView
-                    android:id="@+id/CommodityName"
+                    android:id="@+id/name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="此处为商品名称"
@@ -58,7 +58,7 @@
                     android:textSize="20sp"></TextView>
 
                 <TextView
-                    android:id="@+id/CommodityDetail"
+                    android:id="@+id/detail"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="此处为商品详细"
@@ -92,7 +92,7 @@
                         android:showDividers="middle">
 
                         <TextView
-                            android:id="@+id/SubButton"
+                            android:id="@+id/subButton"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:paddingLeft="8dp"
@@ -106,7 +106,7 @@
                             android:background="@color/colorPrimary"></TextView>
 
                         <TextView
-                            android:id="@+id/CommodityNum"
+                            android:id="@+id/commodityNum"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:paddingLeft="8dp"
@@ -120,7 +120,7 @@
                             android:background="@color/colorPrimary"></TextView>
 
                         <TextView
-                            android:id="@+id/AddButton"
+                            android:id="@+id/addButton"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:paddingLeft="8dp"
@@ -197,13 +197,13 @@
                         android:textSize="20sp"></TextView>
 
                     <EditText
-                        android:inputType="number"
                         android:layout_width="180dp"
                         android:layout_height="wrap_content"
                         android:layout_alignParentRight="true"
                         android:layout_centerVertical="true"
                         android:background="@color/white"
                         android:hint="请输入收货人电话"
+                        android:inputType="number"
                         android:textAlignment="center"
                         android:textSize="20sp"></EditText>
 

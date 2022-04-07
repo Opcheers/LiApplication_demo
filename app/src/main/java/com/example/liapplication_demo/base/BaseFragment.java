@@ -38,11 +38,14 @@ public abstract class BaseFragment extends Fragment {
         loadStatesView(inflater, container);
         mBind = ButterKnife.bind(this, rootView);
         initView(rootView);
+        initEvent();
         initPresenter();
         loadData();
         return rootView;
 
     }
+
+
 
     /**
      * 加载各种状态的View
@@ -144,6 +147,9 @@ public abstract class BaseFragment extends Fragment {
         //创建presenter
     }
 
+    protected void initEvent(){
+        //初始化listener
+    }
 
     protected void loadData(){
         //加载数据

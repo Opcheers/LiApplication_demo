@@ -1,8 +1,9 @@
 package com.example.liapplication_demo.model.domain;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class Commodities {
+public class Commodities implements Serializable {
 
 
     /**
@@ -49,7 +50,7 @@ public class Commodities {
                 '}';
     }
 
-    public static class DataBean {
+    public static class DataBean implements Serializable{
         /**
          * comId : 016d1598-c613-44e1-99bd-37aa11afec46
          * comName : 薯条

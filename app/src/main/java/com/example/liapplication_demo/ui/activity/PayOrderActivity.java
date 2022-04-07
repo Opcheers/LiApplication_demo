@@ -1,18 +1,15 @@
 package com.example.liapplication_demo.ui.activity;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
-
-import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.RadioButton;
 import android.widget.RelativeLayout;
 
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.liapplication_demo.R;
 
-public class PayOrder extends AppCompatActivity {
+public class PayOrderActivity extends AppCompatActivity {
 
      private RadioButton alipayButton;
      private RadioButton wx_payButton;

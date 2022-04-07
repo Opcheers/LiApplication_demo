@@ -23,7 +23,7 @@ import java.util.List;
 
 import butterknife.BindView;
 
-public class ActivityOrderActivity extends BaseActivity {
+public class ActivityOrderActivity extends BaseActivity implements ActivityOrderAdapter.OnClickDateListListener {
 
     @BindView(R.id.date_list_view)
     public RecyclerView mDateList;
@@ -70,7 +70,8 @@ public class ActivityOrderActivity extends BaseActivity {
         mPayBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                LogUtils.d(this, "pay button click...");
+                Intent intent = new Intent(ActivityOrderActivity.this, PayOrderActivity.class);
+                startActivity(intent);
             }
 
         });
@@ -83,6 +84,10 @@ public class ActivityOrderActivity extends BaseActivity {
                 startActivityForResult(intent, 1);
             }
         });
+
+        //给日期适配器设置监听
+        mOrderDateAdapter.setOnClickDateListListener(this);
+
 
     }
 
@@ -140,6 +145,17 @@ public class ActivityOrderActivity extends BaseActivity {
         mTotalPrice.setText("总额：￥" + String.format("%.2f", mTotalPriceNum));
     }
 
+
+    @Override
+    public void OnClickItemListener(String item) {
+        /**
+         * 监听到点击事件：
+         * 1.框框变色
+         * 2.获取orderdate
+         */
+        LogUtils.d(this, "date item click --> date: " + item);
+
+    }
 
 
 }

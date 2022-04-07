@@ -144,10 +144,10 @@
 
     <LinearLayout
         android:id="@+id/visitor_info"
-        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/travel_info">
+        android:layout_below="@id/travel_info"
+        android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -167,15 +167,16 @@
                 android:id="@+id/add_visitor"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
-                android:scaleType="fitXY"
-                android:background="@color/transparent"
                 android:layout_gravity="center_vertical"
+                android:background="@color/transparent"
+                android:scaleType="fitXY"
                 android:src="@mipmap/ic_add" />
         </LinearLayout>
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/visitor_info_list_view"
             android:layout_width="match_parent"
-            android:layout_height="240dp"/>
+            android:layout_height="240dp" />
 
     </LinearLayout>
 
@@ -190,6 +191,7 @@
             android:id="@+id/total_price"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
             android:layout_marginLeft="20dp"
             android:layout_marginTop="15dp"
             android:text="总额：0￥"
@@ -201,7 +203,7 @@
             android:layout_width="wrap_content"
             android:layout_height="40dp"
             android:layout_alignParentRight="true"
-            android:layout_marginTop="5dp"
+            android:layout_centerVertical="true"
             android:layout_marginRight="10dp"
             android:background="@drawable/shape_main_btn"
             android:text="去支付"

@@ -13,9 +13,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        <activity android:name=".ui.activity.CommodityDetail"/>
+        <activity android:name=".ui.activity.ShopCommodityDetailActivity"/>
         <activity
-            android:name=".ui.activity.PayOrder"
+            android:name=".ui.activity.PayOrderActivity"
             android:exported="true">
 <!--            <intent-filter>-->
 <!--                <action android:name="android.intent.action.MAIN" />-->
