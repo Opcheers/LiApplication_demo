@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.RadioButton;
+import android.widget.RelativeLayout;
 
 
 import com.example.liapplication_demo.R;
@@ -16,6 +17,9 @@ public class PayOrder extends AppCompatActivity {
      private RadioButton alipayButton;
      private RadioButton wx_payButton;
 
+     private RelativeLayout alipay;
+     private RelativeLayout wx_pay;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,8 +27,10 @@ public class PayOrder extends AppCompatActivity {
 
         alipayButton = findViewById(R.id.alipayButton);
         wx_payButton = findViewById(R.id.wx_button);
+        alipay = findViewById(R.id.alipay);
+        wx_pay = findViewById(R.id.wx_pay);
 
-        alipayButton.setOnClickListener(new View.OnClickListener() {
+        alipay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 alipayButton.setChecked(true);
@@ -32,7 +38,7 @@ public class PayOrder extends AppCompatActivity {
             }
         });
 
-        wx_payButton.setOnClickListener(new View.OnClickListener() {
+        wx_pay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 alipayButton.setChecked(false);

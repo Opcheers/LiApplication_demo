@@ -36,13 +36,14 @@
             android:orientation="vertical">
 
             <RelativeLayout
+                android:id="@+id/alipay"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:padding="10dp">
 
                 <ImageView
-                    android:id="@+id/alipay"
+                    android:id="@+id/alipayImage"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
                     android:layout_alignParentLeft="true"
@@ -53,7 +54,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
-                    android:layout_toRightOf="@+id/alipay"
+                    android:layout_toRightOf="@+id/alipayImage"
                     android:paddingLeft="10dp"
                     android:text="@string/alipay"
                     android:textColor="@color/black"
@@ -69,13 +70,14 @@
             </RelativeLayout>
 
             <RelativeLayout
+                android:id="@+id/wx_pay"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:padding="10dp">
 
                 <ImageView
-                    android:id="@+id/alipay"
+                    android:id="@+id/wx_payImage"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
                     android:layout_alignParentLeft="true"
@@ -86,7 +88,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
-                    android:layout_toRightOf="@+id/alipay"
+                    android:layout_toRightOf="@+id/wx_payImage"
                     android:paddingLeft="10dp"
                     android:text="@string/wx_pay"
                     android:textColor="@color/black"
