@@ -27,7 +27,6 @@
         android:id="@+id/farm_activity_list_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_margin="@dimen/dp_10"
-        android:background="#D3D3D3" />
+        android:layout_margin="@dimen/dp_10"/>
 
 </LinearLayout>

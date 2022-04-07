@@ -15,7 +15,6 @@ public class FarmlandIdPresenterImpl implements IFarmlandIdPresenter {
     }
 
 
-
     @Override
     public void onError() {
 
@@ -30,6 +29,4 @@ public class FarmlandIdPresenterImpl implements IFarmlandIdPresenter {
     public void onEmpty() {
 
     }
-
-
 }

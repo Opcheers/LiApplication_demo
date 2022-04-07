@@ -36,6 +36,7 @@ public class ActivityPageAdapter extends RecyclerView.Adapter<ActivityPageAdapte
         View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_list_view_farm_activity, parent, false);
 
         final InnerHolder holder = new InnerHolder(itemView);
+
         holder.activityView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

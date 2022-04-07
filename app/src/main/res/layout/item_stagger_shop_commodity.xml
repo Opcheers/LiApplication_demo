@@ -9,6 +9,7 @@
 
 
     <ImageView
+        android:layout_margin="10dp"
         android:id="@+id/comPreview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -21,39 +22,43 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/comPreview"
-        android:layout_marginTop="20dp"
-        android:layout_marginBottom="5dp"
+        android:layout_margin="10dp"
         android:text="标题"
         android:textColor="@color/black"
         android:textSize="20sp" />
-<RelativeLayout
-    android:orientation="horizontal"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content">
-    <TextView
-        android:id="@+id/comPrice"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/comName"
-        android:text="￥0.0"
-        android:textColor="@color/red" />
 
-    <TextView
-        android:id="@+id/paidNum"
-        android:layout_width="wrap_content"
+    <RelativeLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/comName"
-        android:layout_marginLeft="5dp"
-        android:layout_toRightOf="@id/comPrice"
-        android:text="0人付款" />
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="10dp"
+        android:orientation="horizontal">
 
-    <TextView
-        android:id="@+id/comStock"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/comName"
-        android:layout_alignParentRight="true"
-        android:text="库存10000" />
-</RelativeLayout>
+        <TextView
+            android:id="@+id/comPrice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/comName"
+            android:text="￥0.0"
+            android:textColor="@color/red" />
+
+        <TextView
+            android:id="@+id/paidNum"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/comName"
+            android:layout_marginLeft="5dp"
+            android:layout_toRightOf="@id/comPrice"
+            android:text="0人付款" />
+
+        <TextView
+            android:id="@+id/comStock"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/comName"
+            android:layout_alignParentRight="true"
+            android:text="库存10000" />
+    </RelativeLayout>
 
 </LinearLayout>
