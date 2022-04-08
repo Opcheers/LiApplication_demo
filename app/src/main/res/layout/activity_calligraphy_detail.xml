@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="none"
+        android:fillViewport="true">
+        <ImageView
+            android:id="@+id/calligraphyDetail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scaleType="fitCenter"
+            tools:ignore="MissingConstrains"
+            android:adjustViewBounds="true"/>
+    </ScrollView>
+
+
+    <Button
+        android:id="@+id/contactButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:paddingLeft="120dp"
+        android:paddingRight="120dp"
+        android:drawableLeft="@drawable/ic_navigation_bus"
+        android:background="@color/colorPrimaryDark"
+        android:text="联系我们"
+        android:textColor="@color/white"
+        android:textSize="25sp"
+        android:onClick="showDialogClick"/>
+
+</RelativeLayout>

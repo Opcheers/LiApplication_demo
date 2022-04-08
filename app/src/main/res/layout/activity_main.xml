@@ -17,6 +17,7 @@
         android:layout_alignParentTop="true"
         android:src="@mipmap/applogo_02"
         android:scaleType="centerInside"/>
+
     <EditText
         android:id="@+id/main_et_telnumber"
         android:layout_width="match_parent"
@@ -47,6 +48,7 @@
         android:paddingLeft="20dp"
         android:textColor="@color/grey_BBBBBB"
         android:textSize="14dp" />
+
     <Button
         android:id="@+id/main_btn_getcode"
         android:layout_width="match_parent"
@@ -57,10 +59,10 @@
         android:layout_marginRight="22dp"
         android:layout_toRightOf="@id/main_et_pwdcode"
         android:background="@drawable/shape_main_btn"
+        android:onClick="onClick"
         android:text="@string/main_btn_getcode"
         android:textColor="@color/white"
-        android:textSize="14dp"
-        android:onClick="onClick"/>
+        android:textSize="14dp" />
     <Button
         android:id="@+id/main_btn_login"
         android:layout_width="match_parent"

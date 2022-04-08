@@ -17,10 +17,10 @@
     <string name="home_tv_farm">开心农场</string>
     <string name="home_tv_discount">优惠活动</string>
     <string name="home_tv_announcement_title">
-        通知：4号土地可以开始租赁了！！
+        开心农场已开放，欢迎大家前来体验
     </string>
     <string name="home_tv_announcement_text">
-        4号土地共100平方米，土质肥沃，适合种植玉米，大豆，红薯等农作物，先到先得，速来抢购吧！
+        开心农场己开放，欢迎大家前来体验亲手种下种子，享受耕种乐趣，收获健康生活，李氏农业开心农场现已开放租赁，土质肥天，适合种植各种农作物，推广期租赁可享受优惠以及贈品，先到先得，快来租赁吧！
     </string>
     <string name="farm_tv_land">我的土地</string>
     <string name="farm_tv_announcement">
@@ -65,6 +65,12 @@
     <string name="text_farmland_mine_btn">已有土地</string>
     <string name="title_select_farmland">选择土地</string>
     <string name="title_lease_mode">租赁模式</string>
+    <string name="tips_lease_mode_1">无托管：仅提供土地租赁服务，涉及种植的其余操作需自己完成。</string>
+    <string name="tips_lease_mode_2">全托管：除了提供土地租赁服务外，还可以付费对部分种植操作进行托管。</string>
 
+    <string-array name="lease_mode">
+        <item>无托管</item>
+        <item>全托管</item>
+    </string-array>
 
 </resources>

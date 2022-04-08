@@ -8,7 +8,6 @@ import android.widget.TextView;
 import com.example.liapplication_demo.R;
 import com.example.liapplication_demo.base.BaseActivity;
 import com.example.liapplication_demo.model.domain.Commodities;
-import com.example.liapplication_demo.utils.LogUtils;
 
 import butterknife.BindView;
 
@@ -44,7 +43,6 @@ public class ShopCommodityDetailActivity extends BaseActivity {
         Intent intent = getIntent();
 
         mCommodity = (Commodities.DataBean) intent.getSerializableExtra("commodity");
-        LogUtils.d(this, "commodity --> " + mCommodity.toString());
 
         //加载到页面上
         setData();
