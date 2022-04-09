@@ -6,9 +6,9 @@
     android:orientation="vertical">
 
     <ScrollView
-        android:background="@drawable/user_background"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
+        android:background="@drawable/user_background"
         android:padding="15dp">
 
         <LinearLayout
@@ -31,12 +31,15 @@
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:gravity="center_vertical">
+                        android:gravity="center_vertical"
+                        android:paddingTop="15dp"
+                        android:paddingBottom="15dp">
 
                         <ImageView
                             android:id="@+id/userIcon"
                             android:layout_width="60dp"
                             android:layout_height="60dp"
+                            android:layout_marginLeft="30dp"
                             android:src="@drawable/alipay" />
 
                         <TextView
@@ -144,12 +147,14 @@
                 <RelativeLayout
                     android:id="@+id/orderButton"
                     android:layout_width="match_parent"
-                    android:layout_height="50dp">
+                    android:layout_height="50dp"
+                    android:layout_marginBottom="15dp">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
+                        android:layout_marginLeft="15dp"
                         android:text="@string/order"
                         android:textColor="@color/black"
                         android:textSize="16sp" />
@@ -159,22 +164,28 @@
                         android:layout_height="25dp"
                         android:layout_alignParentRight="true"
                         android:layout_centerVertical="true"
+                        android:layout_marginRight="15dp"
                         android:src="@drawable/right" />
 
                 </RelativeLayout>
+
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
-                    android:background="@color/colorPrimary"/>
+                    android:background="@color/colorPrimary" />
+
                 <RelativeLayout
                     android:id="@+id/landButton"
                     android:layout_width="match_parent"
-                    android:layout_height="50dp">
+                    android:layout_height="50dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginBottom="15dp">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
+                        android:layout_marginLeft="15dp"
                         android:text="@string/user_farmland"
                         android:textColor="@color/black"
                         android:textSize="16sp" />
@@ -184,22 +195,27 @@
                         android:layout_height="25dp"
                         android:layout_alignParentRight="true"
                         android:layout_centerVertical="true"
+                        android:layout_marginRight="15dp"
                         android:src="@drawable/right" />
 
                 </RelativeLayout>
+
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
-                    android:background="@color/colorPrimary"/>
+                    android:background="@color/colorPrimary" />
+
                 <RelativeLayout
                     android:id="@+id/integerButton"
                     android:layout_width="match_parent"
-                    android:layout_height="50dp">
+                    android:layout_height="50dp"
+                    android:layout_marginTop="15dp">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
+                        android:layout_marginLeft="15dp"
                         android:text="@string/integer"
                         android:textColor="@color/black"
                         android:textSize="16sp" />
@@ -209,13 +225,24 @@
                         android:layout_height="25dp"
                         android:layout_alignParentRight="true"
                         android:layout_centerVertical="true"
+                        android:layout_marginRight="15dp"
                         android:src="@drawable/right" />
 
                 </RelativeLayout>
 
-
             </LinearLayout>
 
+            <Button
+                android:id="@+id/logout"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="200dp"
+                android:background="@drawable/exit_button"
+                android:text="@string/exit"
+                android:textColor="@color/white" />
+
         </LinearLayout>
+
     </ScrollView>
 </LinearLayout>

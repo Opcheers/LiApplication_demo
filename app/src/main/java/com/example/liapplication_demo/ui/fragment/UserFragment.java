@@ -2,6 +2,7 @@ package com.example.liapplication_demo.ui.fragment;
 
 import android.content.Intent;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -32,6 +33,8 @@ public class UserFragment extends BaseFragment {
     public RelativeLayout landButton;
     @BindView(R.id.integerButton)
     public RelativeLayout integerButton;
+    @BindView(R.id.logout)
+    public Button exitButton;
 
     @Override
     protected int getRootViewResId() {
@@ -57,6 +60,13 @@ public class UserFragment extends BaseFragment {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(getActivity(), FarmlandMineAcitivty.class));
+            }
+        });
+
+        exitButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // Add processing logic here
             }
         });
     }
