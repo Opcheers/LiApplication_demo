@@ -1,18 +1,18 @@
 package com.example.liapplication_demo.ui.activity;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
-import androidx.viewpager2.widget.ViewPager2;
-
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.viewpager2.widget.ViewPager2;
+
 import com.example.liapplication_demo.R;
 import com.example.liapplication_demo.ui.adapter.OrderFragmentAdapter;
 import com.example.liapplication_demo.ui.fragment.MyActOrderFragment;
-import com.example.liapplication_demo.ui.fragment.MyCommodityOrderFragment;
+import com.example.liapplication_demo.ui.fragment.MyComOrderFragment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,7 +30,6 @@ public class MyOrderActivity extends AppCompatActivity implements View.OnClickLi
         setContentView(R.layout.activity_my_order);
 
         initPager();
-
         initEvent();
     }
 
@@ -46,7 +45,7 @@ public class MyOrderActivity extends AppCompatActivity implements View.OnClickLi
         viewPager2 = findViewById(R.id.vp);
 
         fragmentList = new ArrayList<>();
-        fragmentList.add(MyCommodityOrderFragment.newInstance());
+        fragmentList.add(MyComOrderFragment.newInstance());
         fragmentList.add(MyActOrderFragment.newInstance());
 
         OrderFragmentAdapter orderFragmentAdapter = new OrderFragmentAdapter(getSupportFragmentManager(), getLifecycle(), fragmentList);

@@ -2,7 +2,6 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:gravity="center_vertical"
-    android:orientation="horizontal"
     android:paddingTop="10dp"
     android:paddingBottom="10dp">
 
@@ -20,7 +19,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingLeft="10dp"
-            android:text="商品名称"
+            android:text="活动名称"
             android:textColor="@color/black"
             android:textSize="15sp" />
     </LinearLayout>
@@ -37,7 +36,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingBottom="5dp"
-            android:text="购买数量"
+            android:text="订单数量"
             android:textColor="@color/colorPrimary"
             android:textSize="15sp" />
 

@@ -2,7 +2,7 @@
     <string name="app_name">李氏农场</string>
     <string name="main_et_tel">请输入手机号</string>
     <string name="main_et_code">请输入验证码</string>
-    <string name="main_btn_getcode">获取验证码</string>
+    <string name="main_btn_getCode">获取验证码</string>
     <string name="main_btn_login">登录</string>
     <string name="main_tv_help">帮助</string>
     <string name="main_tv_privacy">隐私</string>

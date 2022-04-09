@@ -1,7 +1,9 @@
 package com.example.liapplication_demo.model;
 
+import com.example.liapplication_demo.model.domain.ActivityOrder;
 import com.example.liapplication_demo.model.domain.Calligraphy;
 import com.example.liapplication_demo.model.domain.Commodities;
+import com.example.liapplication_demo.model.domain.CommodityOrder;
 import com.example.liapplication_demo.model.domain.FarmActivities;
 import com.example.liapplication_demo.model.domain.FarmlandGroup;
 import com.example.liapplication_demo.model.domain.FarmlandItem;
@@ -23,9 +25,6 @@ public interface Api {
     Call<Commodities> getCommoditiesByCategory(@Url String url);
 
     @GET
-    Call<FarmActivities> getActivityDetailById(@Url String url);
-
-    @GET
     Call<FarmlandItem> getFarmlandItemByGroupId(@Url String url);
 
     @GET("calligraphy/findAll")
@@ -34,7 +33,10 @@ public interface Api {
     @GET("farmland/findAllGroup")
     Call<FarmlandGroup> getFarmlandGroup();
 
-    @GET("farmland/findByGroup")
-    Call<FarmlandItem> getFarmlandItem();
+    @GET
+    Call<ActivityOrder> getActivityOrder(@Url String url);
+
+    @GET
+    Call<CommodityOrder> getCommodityOrder(@Url String url);
 
 }

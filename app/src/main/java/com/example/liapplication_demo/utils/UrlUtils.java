@@ -6,11 +6,15 @@ public class UrlUtils {
         return "commodity/findByComCategory/" + title;
     }
 
-    public static String createActivityDetailUrl(String id) {
-        return "activity/findById/" + id;
-    }
-
     public static String createFarmlandIdUrl(String id) {
         return "farmland/findByGroup/" + id;
+    }
+
+    public static String createActivityOrderUrl(String userId){
+        return "actOrder/findByUserId/" + userId;
+    }
+
+    public static String createCommodityOrderUrl(String userId){
+        return "comOrder/findAllByUserIdAndAndPayStatus/"+userId+"/1";
     }
 }

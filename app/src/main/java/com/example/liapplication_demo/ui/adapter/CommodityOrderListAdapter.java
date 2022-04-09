@@ -1,6 +1,7 @@
 package com.example.liapplication_demo.ui.adapter;
 
 import android.content.Context;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -9,8 +10,9 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.example.liapplication_demo.R;
-import com.example.liapplication_demo.data.CommodityOrderDataBean;
+import com.example.liapplication_demo.model.domain.CommodityOrder;
 
 import java.util.List;
 
@@ -19,19 +21,18 @@ import java.util.List;
  */
 public class CommodityOrderListAdapter extends RecyclerView.Adapter<CommodityOrderListAdapter.InnerHolder> {
 
-    private List<CommodityOrderDataBean> orderList;
-    private Context context;
+    private List<CommodityOrder.DataBean> orderList;
+    private Context mContext;
 
-    public CommodityOrderListAdapter(List<CommodityOrderDataBean> orderList, Context context) {
-        this.orderList = orderList;
-        this.context = context;
+    public CommodityOrderListAdapter(Context content){
+        mContext = content;
     }
 
     @NonNull
     @Override
     public InnerHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         // 过滤layout布局放置在view中
-        View view = View.inflate(context, R.layout.orderitem, null);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.orderitem, parent, false);
         return new InnerHolder(view);
     }
 
@@ -43,7 +44,7 @@ public class CommodityOrderListAdapter extends RecyclerView.Adapter<CommodityOrd
      */
     @Override
     public void onBindViewHolder(@NonNull InnerHolder holder, int position) {
-        holder.imgIcon.setImageResource(R.color.blue_40A9FF);
+        Glide.with(mContext).load(orderList.get(position).getComPreview()).into(holder.imgIcon);
         holder.comNum.setText("共" + orderList.get(position).getComQuantity() + "件");
         holder.comName.setText(orderList.get(position).getComName());
         holder.comPrice.setText("￥" + orderList.get(position).getComPrice());
@@ -52,6 +53,11 @@ public class CommodityOrderListAdapter extends RecyclerView.Adapter<CommodityOrd
     @Override
     public int getItemCount() {
         return orderList.size();
+    }
+
+    public void setData(List<CommodityOrder.DataBean> orderList) {
+        this.orderList = orderList;
+        notifyDataSetChanged();
     }
 
     public class InnerHolder extends RecyclerView.ViewHolder {
