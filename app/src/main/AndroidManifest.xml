@@ -36,7 +36,6 @@
         <activity android:name=".ui.activity.CalligraphyAllActivity"/>
         <activity android:name=".ui.activity.CalligraphyDetailActivity"/>
 
-        <activity android:name=".ui.activity.MyLandActivity"/>
         <activity android:name=".ui.activity.MyOrderActivity"/>
     </application>
 

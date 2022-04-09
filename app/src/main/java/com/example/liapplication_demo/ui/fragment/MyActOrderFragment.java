@@ -1,31 +1,32 @@
 package com.example.liapplication_demo.ui.fragment;
 
 import android.os.Bundle;
+import android.view.View;
 
-import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-
 import com.example.liapplication_demo.R;
-import com.example.liapplication_demo.data.ActOrderDataBean;
+import com.example.liapplication_demo.base.BaseFragment;
+import com.example.liapplication_demo.model.domain.ActivityOrder;
+import com.example.liapplication_demo.presenter.impl.MyActivityOrderPresenterImpl;
 import com.example.liapplication_demo.ui.adapter.ActOrderListAdapter;
+import com.example.liapplication_demo.view.IMyActivityOrderCallback;
 
-import java.util.ArrayList;
 import java.util.List;
+
+import butterknife.BindView;
 
 /**
  * 我的订单中活动订单的Fragment
  */
-public class MyActOrderFragment extends Fragment {
+public class MyActOrderFragment extends BaseFragment implements IMyActivityOrderCallback {
 
-    private View root;
-    private RecyclerView actOrderListView;
-    private List<ActOrderDataBean> actOrderList;
+    @BindView(R.id.activity_order_list_view)
+    public RecyclerView mActOrderListView;
+
+    private MyActivityOrderPresenterImpl mPresenter;
+    private ActOrderListAdapter mAdapter;
 
     public static MyActOrderFragment newInstance() {
         Bundle args = new Bundle();
@@ -34,35 +35,54 @@ public class MyActOrderFragment extends Fragment {
         return fragment;
     }
 
+
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    protected void initView(View rootView) {
+
+        LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
+        layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+        mActOrderListView.setLayoutManager(layoutManager);
+        mAdapter = new ActOrderListAdapter();
+        mActOrderListView.setAdapter(mAdapter);
     }
 
-    /**
-     * 解析xml
-     *
-     * @param inflater
-     * @param container
-     * @param savedInstanceState
-     * @return
-     */
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        if (root == null)
-            root = inflater.inflate(R.layout.fragment_my_act_order, container, false);
+    protected void initPresenter() {
+        //初始化presenter
+        mPresenter = new MyActivityOrderPresenterImpl();
+        mPresenter.registerCallback(this);
+    }
 
-        actOrderList = new ArrayList<>();
-        for (int i = 1; i < 10; i++) {
-            actOrderList.add(new ActOrderDataBean("111101019191919", "测试" + i, "10001", "1", "11111"));
-        }
+    @Override
+    protected void loadData() {
+        //加载数据后设置适配器
+        mPresenter.getActivityOrder();
+    }
 
-        actOrderListView = root.findViewById(R.id.rv);
-        actOrderListView.setAdapter(new ActOrderListAdapter(actOrderList, getActivity()));
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false);
-        actOrderListView.setLayoutManager(linearLayoutManager);
-        actOrderListView.addItemDecoration(new DividerItemDecoration(getActivity(), DividerItemDecoration.VERTICAL));
+    @Override
+    protected int getRootViewResId() {
+        return R.layout.fragment_my_act_order;
+    }
 
-        return root;
+    @Override
+    public void onError() {
+
+    }
+
+    @Override
+    public void onLoading() {
+
+    }
+
+    @Override
+    public void onEmpty() {
+
+    }
+
+    @Override
+    public void onActivityOrderLoaded(List<ActivityOrder.DataBean> activityOrders) {
+        //数据从这里回来
+        mAdapter.setData(activityOrders);
+        setUpStates(State.SUCCESS);
     }
 }

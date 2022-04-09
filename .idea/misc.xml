@@ -3,6 +3,8 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/project/LiApplication_demo/app/src/main/res/drawable/myrect.xml" value="0.1535" />
+        <entry key="..\:/project/LiApplication_demo/app/src/main/res/drawable/selector_navigation_bar_color.xml" value="0.1615" />
         <entry key="..\:/project/LiApplication_demo/app/src/main/res/drawable/shape_rounded_corners_with_backcolor.xml" value="0.1" />
         <entry key="..\:/project/LiApplication_demo/app/src/main/res/drawable/shape_rounded_corners_with_black.xml" value="0.1" />
         <entry key="..\:/project/LiApplication_demo/app/src/main/res/drawable/shape_rounded_corners_with_grey.xml" value="0.1" />
@@ -13,25 +15,40 @@
         <entry key="..\:/project/LiApplication_demo/app/src/main/res/drawable/shape_rounded_corners_with_white.xml" value="0.1" />
         <entry key="..\:/project/LiApplication_demo/app/src/main/res/drawable/shape_rounded_corners_with_whitecolor.xml" value="0.1" />
         <entry key="..\:/project/LiApplication_demo/app/src/main/res/drawable/shape_rounded_corners_without_shadows.xml" value="0.1" />
+        <entry key="..\:/project/LiApplication_demo/app/src/main/res/drawable/user_background.xml" value="0.1535" />
+        <entry key="..\:/project/LiApplication_demo/app/src/main/res/drawable/user_card.xml" value="0.1535" />
+        <entry key="..\:/project/LiApplication_demo/app/src/main/res/layout/act_order_item.xml" value="0.25" />
         <entry key="..\:/project/LiApplication_demo/app/src/main/res/layout/activiry_pay.xml" value="0.18359020852221214" />
         <entry key="..\:/project/LiApplication_demo/app/src/main/res/layout/activity_activity_add_visitor.xml" value="0.14493373236425822" />
         <entry key="..\:/project/LiApplication_demo/app/src/main/res/layout/activity_activity_detail.xml" value="0.14876723777684914" />
         <entry key="..\:/project/LiApplication_demo/app/src/main/res/layout/activity_activity_order.xml" value="0.1569046601111586" />
+        <entry key="..\:/project/LiApplication_demo/app/src/main/res/layout/activity_calligraphy_all.xml" value="0.30055579307396324" />
         <entry key="..\:/project/LiApplication_demo/app/src/main/res/layout/activity_commodity_detail.xml" value="0.18127404873877725" />
         <entry key="..\:/project/LiApplication_demo/app/src/main/res/layout/activity_farmland.xml" value="0.25" />
         <entry key="..\:/project/LiApplication_demo/app/src/main/res/layout/activity_farmland_lease.xml" value="0.25" />
         <entry key="..\:/project/LiApplication_demo/app/src/main/res/layout/activity_farmland_mine.xml" value="0.17135086128739802" />
         <entry key="..\:/project/LiApplication_demo/app/src/main/res/layout/activity_farmland_pay.xml" value="0.18" />
         <entry key="..\:/project/LiApplication_demo/app/src/main/res/layout/activity_home.xml" value="0.18359020852221214" />
+        <entry key="..\:/project/LiApplication_demo/app/src/main/res/layout/activity_main.xml" value="0.19495510902094912" />
+        <entry key="..\:/project/LiApplication_demo/app/src/main/res/layout/activity_my_land.xml" value="0.15391192817443353" />
+        <entry key="..\:/project/LiApplication_demo/app/src/main/res/layout/activity_my_order.xml" value="0.15391192817443353" />
         <entry key="..\:/project/LiApplication_demo/app/src/main/res/layout/activity_pay_order.xml" value="0.17543064369900271" />
+        <entry key="..\:/project/LiApplication_demo/app/src/main/res/layout/base_fragment_layout.xml" value="0.15391192817443353" />
+        <entry key="..\:/project/LiApplication_demo/app/src/main/res/layout/commodityimage.xml" value="0.15391192817443353" />
+        <entry key="..\:/project/LiApplication_demo/app/src/main/res/layout/dialog_calligraphy_contact.xml" value="0.15391192817443353" />
         <entry key="..\:/project/LiApplication_demo/app/src/main/res/layout/fragment_activity.xml" value="0.2033514492753623" />
         <entry key="..\:/project/LiApplication_demo/app/src/main/res/layout/fragment_home.xml" value="0.20081595648232095" />
+        <entry key="..\:/project/LiApplication_demo/app/src/main/res/layout/fragment_my_act_order.xml" value="0.14897618052653572" />
+        <entry key="..\:/project/LiApplication_demo/app/src/main/res/layout/fragment_my_order.xml" value="0.15391192817443353" />
         <entry key="..\:/project/LiApplication_demo/app/src/main/res/layout/fragment_shop.xml" value="0.1569046601111586" />
         <entry key="..\:/project/LiApplication_demo/app/src/main/res/layout/fragment_shop_pager.xml" value="0.1569046601111586" />
+        <entry key="..\:/project/LiApplication_demo/app/src/main/res/layout/fragment_user.xml" value="0.30055579307396324" />
         <entry key="..\:/project/LiApplication_demo/app/src/main/res/layout/item_list_view_activity_date.xml" value="0.18170158187259514" />
         <entry key="..\:/project/LiApplication_demo/app/src/main/res/layout/item_list_view_activity_visitor.xml" value="0.18170158187259514" />
         <entry key="..\:/project/LiApplication_demo/app/src/main/res/layout/item_list_view_farm_activity.xml" value="0.18170158187259514" />
         <entry key="..\:/project/LiApplication_demo/app/src/main/res/layout/item_stagger_shop_commodity.xml" value="0.17870884993587002" />
+        <entry key="..\:/project/LiApplication_demo/app/src/main/res/layout/orderitem.xml" value="0.2747053490480508" />
+        <entry key="..\:/project/LiApplication_demo/app/src/main/res/menu/my_navigation_items.xml" value="0.19495510902094912" />
         <entry key="..\:/project/LiFarm/LiApplication_demo/app/src/main/res/layout/activity_activity_detail.xml" value="0.15321849501359927" />
         <entry key="..\:/project/LiFarm/LiApplication_demo/app/src/main/res/layout/activity_activity_order.xml" value="0.13381787088499358" />
         <entry key="..\:/project/LiFarm/LiApplication_demo/app/src/main/res/layout/activity_calligraphy_all.xml" value="0.2535271483539974" />

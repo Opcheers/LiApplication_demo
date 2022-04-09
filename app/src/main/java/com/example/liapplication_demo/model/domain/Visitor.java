@@ -7,6 +7,7 @@ public class Visitor implements Parcelable {
     String name;
     String id;
     String phone;
+    int type;
 
     public Visitor(String name, String id, String phone) {
         this.name = name;

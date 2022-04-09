@@ -11,8 +11,13 @@ import com.example.liapplication_demo.R;
 import com.example.liapplication_demo.base.BaseActivity;
 import com.example.liapplication_demo.utils.LogUtils;
 
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStreamReader;
 
 import butterknife.BindView;
 
@@ -69,10 +74,12 @@ public class MainActivity extends BaseActivity {
         String telText = mAccount.getText().toString().trim();
         if (TextUtils.isEmpty(telText)) {
             Toast.makeText(this, "输入手机号为空，请输入手机号！", Toast.LENGTH_SHORT).show();
+
             return;
         }
         if (telText.length()!=11 || !TextUtils.isDigitsOnly(telText)) {
             Toast.makeText(this, "请正确填写手机号码！", Toast.LENGTH_SHORT).show();
+            mAccount.setText("");
             return;
         }
 
@@ -123,6 +130,31 @@ public class MainActivity extends BaseActivity {
             fos.write((telText+"***"+pwdcodeText).getBytes());
             fos.close();
         } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+
+        try {
+            FileInputStream fileInputStream = this.openFileInput("userinfo.text");
+            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(fileInputStream));
+            String info = bufferedReader.readLine();
+            //保存格式:账号：***，密码：***
+            String[] splits = info.split("\\*\\*\\*");
+            String account = splits[0];
+            String pwd = splits[1];
+            //回显数据
+            mAccount.setText(account);
+            mVerification.setText(pwd);
+
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
