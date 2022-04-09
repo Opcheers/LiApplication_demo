@@ -26,12 +26,17 @@
             android:orientation="vertical"
             android:padding="15dp">
 
-            <ImageView
-                android:id="@+id/CommodityImage"
+<!--            <ImageView-->
+<!--                android:id="@+id/CommodityImage"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:scaleType="fitCenter"-->
+<!--                android:src="@drawable/ic_launcher_background"></ImageView>-->
+
+            <androidx.viewpager.widget.ViewPager
+                android:id="@+id/viewPage"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:scaleType="fitCenter"
-                android:src="@drawable/ic_launcher_background"></ImageView>
+                android:layout_height="match_parent"/>
 
             <LinearLayout
                 android:layout_width="match_parent"

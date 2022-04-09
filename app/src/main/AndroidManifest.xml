@@ -12,29 +12,36 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
-        <activity android:name=".ui.activity.ShopCommodityDetailActivity"/>
+        <activity
+            android:name=".ui.activity.QrcodeActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.activity.MyLandActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.activity.MyOrderActivity"
+            android:exported="false" />
+        <activity android:name=".ui.activity.ShopCommodityDetailActivity" />
         <activity
             android:name=".ui.activity.PayOrderActivity"
             android:exported="true">
-<!--            <intent-filter>-->
-<!--                <action android:name="android.intent.action.MAIN" />-->
-<!--                <category android:name="android.intent.category.LAUNCHER" />-->
-<!--            </intent-filter>-->
-        </activity>
 
+            <!-- <intent-filter> -->
+            <!-- <action android:name="android.intent.action.MAIN" /> -->
+            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+            <!-- </intent-filter> -->
+        </activity>
         <activity android:name=".ui.activity.MainActivity" />
-        <activity android:name=".ui.activity.HomeActivity" >
+        <activity android:name=".ui.activity.HomeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity android:name=".ui.activity.ActivityDetailActivity" />
         <activity android:name=".ui.activity.ActivityOrderActivity" />
         <activity android:name=".ui.activity.ActivityAddVistorActivity" />
-
         <activity android:name=".ui.activity.FarmlandActivity" />
         <activity android:name=".ui.activity.FarmlandMineAcitivty" />
         <activity android:name=".ui.activity.FarmlandLeaseActivity" />

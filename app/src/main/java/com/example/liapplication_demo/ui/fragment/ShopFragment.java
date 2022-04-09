@@ -7,7 +7,6 @@ import androidx.viewpager.widget.ViewPager;
 
 import com.example.liapplication_demo.R;
 import com.example.liapplication_demo.base.BaseFragment;
-import com.example.liapplication_demo.iCubeNetService.NetService;
 import com.example.liapplication_demo.model.domain.Categories;
 import com.example.liapplication_demo.presenter.impl.ShopPresenterImpl;
 import com.example.liapplication_demo.ui.adapter.ShopPagerAdapter;
