@@ -87,8 +87,6 @@ public class ActivityOrderActivity extends BaseActivity implements ActivityOrder
 
         //给日期适配器设置监听
         mOrderDateAdapter.setOnClickDateListListener(this);
-
-
     }
 
 

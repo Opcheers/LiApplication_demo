@@ -5,137 +5,147 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <RelativeLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="250dp">
-        <!--    轮播图-->
-        <androidx.viewpager.widget.ViewPager
-            android:id="@+id/looper_pager"
-            android:layout_width="match_parent"
-            android:layout_height="250dp" />
+        android:layout_height="match_parent">
 
         <LinearLayout
-            android:id="@+id/point_container"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_marginBottom="10dp"
-            android:gravity="center"
-            android:orientation="horizontal" />
-    </RelativeLayout>
-    <!--    活动-->
-    <TextView
-        style="@style/textviewstyle_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@drawable/shape_underline_title"
-        android:text="@string/home_tv_activity" />
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:text="农场零距离"
-        android:textColor="@color/maincolor"
-        android:textSize="20sp" />
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="250dp">
+                <!--    轮播图-->
+                <androidx.viewpager.widget.ViewPager
+                    android:id="@+id/looper_pager"
+                    android:layout_width="match_parent"
+                    android:layout_height="250dp" />
 
-    <!-- listview-->
-
-    <androidx.cardview.widget.CardView
-        android:id="@+id/home_top_activity"
-        android:layout_width="match_parent"
-        android:layout_height="150dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        app:cardCornerRadius="6dp"
-        app:cardElevation="5dp"
-        app:cardUseCompatPadding="true">
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="150dp">
-
+                <LinearLayout
+                    android:id="@+id/point_container"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginBottom="10dp"
+                    android:gravity="center"
+                    android:orientation="horizontal" />
+            </RelativeLayout>
+            <!--    活动-->
             <TextView
-                android:id="@+id/actName"
+                style="@style/textviewstyle_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="15dp"
-                android:layout_marginTop="10dp"
-                android:text="标题"
-                android:textSize="20dp"
-                android:textStyle="bold" />
+                android:background="@drawable/shape_underline_title"
+                android:text="@string/home_tv_activity" />
 
             <TextView
-                android:id="@+id/actPrice"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/actName"
-                android:layout_marginLeft="15dp"
-                android:layout_marginTop="5dp"
-                android:text="￥0/人"
-                android:textColor="#BFBFBF"
-                android:textSize="15dp" />
+                android:layout_marginLeft="20dp"
+                android:text="农场零距离"
+                android:textColor="@color/maincolor"
+                android:textSize="20sp" />
 
-            <TextView
-                android:id="@+id/actSite"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/actPrice"
-                android:layout_marginLeft="15dp"
-                android:layout_marginTop="20dp"
-                android:text="地址"
-                android:textColor="#BFBFBF"
-                android:textSize="15sp" />
+            <!-- listview-->
 
-            <ImageView
-                android:id="@+id/actPreview"
-                android:layout_width="140dp"
-                android:layout_height="wrap_content"
-                android:layout_alignTop="@id/actName"
-                android:layout_alignBottom="@id/actSite"
-                android:layout_alignParentRight="true"
+            <androidx.cardview.widget.CardView
+                android:id="@+id/home_top_activity"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
-                android:src="@mipmap/ic_launcher_round" />
-        </RelativeLayout>
+                app:cardCornerRadius="6dp"
+                app:cardElevation="5dp"
+                app:cardUseCompatPadding="true">
 
-    </androidx.cardview.widget.CardView>
-    <!--    开心农场-->
-    <TextView
-        style="@style/textviewstyle_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@drawable/shape_underline_title"
-        android:text="@string/home_tv_farm" />
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp">
 
-    <LinearLayout
-        android:id="@+id/farmland"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:background="@drawable/shape_rounded_corners_with_shadows"
-        android:orientation="vertical">
+                    <TextView
+                        android:id="@+id/actName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginTop="10dp"
+                        android:text="标题"
+                        android:textSize="20dp"
+                        android:textStyle="bold" />
 
-        <TextView
-            android:id="@+id/home_tv_farm_announcement_title"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/dp_35"
-            android:layout_marginLeft="10dp"
-            android:padding="10dp"
-            android:text="@string/home_tv_announcement_title"
-            android:textSize="18sp"
-            android:textStyle="bold" />
+                    <TextView
+                        android:id="@+id/actPrice"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/actName"
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginTop="5dp"
+                        android:text="￥0/人"
+                        android:textColor="#BFBFBF"
+                        android:textSize="15dp" />
 
-        <TextView
-            android:id="@+id/home_tv_farm_announcement_text"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_marginBottom="15dp"
-            android:padding="10dp"
-            android:text="@string/home_tv_announcement_text"
-            android:textSize="18sp" />
-    </LinearLayout>
+                    <TextView
+                        android:id="@+id/actSite"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/actPrice"
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginTop="20dp"
+                        android:text="地址"
+                        android:textColor="#BFBFBF"
+                        android:textSize="15sp" />
 
+                    <ImageView
+                        android:id="@+id/actPreview"
+                        android:layout_width="140dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignTop="@id/actName"
+                        android:layout_alignBottom="@id/actSite"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginRight="10dp"
+                        android:src="@mipmap/ic_launcher_round" />
+                </RelativeLayout>
+
+            </androidx.cardview.widget.CardView>
+            <!--    开心农场-->
+            <TextView
+                style="@style/textviewstyle_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/shape_underline_title"
+                android:text="@string/home_tv_farm" />
+
+            <LinearLayout
+                android:id="@+id/farmland"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:background="@drawable/shape_rounded_corners_with_shadows"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/home_tv_farm_announcement_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp_35"
+                    android:layout_marginLeft="10dp"
+                    android:padding="10dp"
+                    android:text="@string/home_tv_announcement_title"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/home_tv_farm_announcement_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginBottom="15dp"
+                    android:padding="10dp"
+                    android:text="@string/home_tv_announcement_text"
+                    android:textSize="18sp" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
 
 </LinearLayout>
 

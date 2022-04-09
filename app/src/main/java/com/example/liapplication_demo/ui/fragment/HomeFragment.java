@@ -6,7 +6,6 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.cardview.widget.CardView;
 import androidx.viewpager.widget.ViewPager;
@@ -18,6 +17,7 @@ import com.example.liapplication_demo.model.domain.FarmActivities;
 import com.example.liapplication_demo.presenter.IHomePresenter;
 import com.example.liapplication_demo.presenter.impl.HomePresenterImpl;
 import com.example.liapplication_demo.ui.activity.ActivityDetailActivity;
+import com.example.liapplication_demo.ui.activity.CalligraphyAllActivity;
 import com.example.liapplication_demo.ui.activity.FarmlandActivity;
 import com.example.liapplication_demo.ui.adapter.HomeLooperPagerAdapter;
 import com.example.liapplication_demo.view.IHomeCallback;
@@ -207,16 +207,19 @@ public class HomeFragment extends BaseFragment implements IHomeCallback, ViewPag
 
     @Override
     public void onLooperItemClick(Integer loopId) {
+        Intent intent = null;
         //轮播图被点击了，这里能拿到ID
         switch (loopId){
             case 0:
                 //跳转到开心农场
-                Intent intent = new Intent(getActivity(), FarmlandActivity.class);
+                intent = new Intent(getActivity(), FarmlandActivity.class);
                 startActivity(intent);
                 break;
             case 1:
                 //跳转到字画列表
-                Toast.makeText(getContext(), "跳转到字画", Toast.LENGTH_SHORT).show();
+                intent = new Intent(getActivity(), CalligraphyAllActivity.class);
+                startActivity(intent);
+                break;
         }
     }
 

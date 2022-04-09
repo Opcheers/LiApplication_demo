@@ -1,13 +1,15 @@
 package com.example.liapplication_demo.presenter;
 
-import com.example.liapplication_demo.base.IBaseCallback;
+import com.example.liapplication_demo.base.IBasePresenter;
+import com.example.liapplication_demo.view.IFarmLandIdCallback;
 
-public interface IFarmlandIdPresenter extends IBaseCallback {
+public interface IFarmlandIdPresenter extends IBasePresenter<IFarmLandIdCallback> {
 
     /**
      * 获取土地编号
+     * @param groupId
      */
-    void getFarmlandId();
+    void getFarmlandId(String groupId);
 
 
     /**

@@ -1,23 +1,13 @@
 package com.example.liapplication_demo.ui.activity;
 
 import android.content.Intent;
-import android.text.Layout;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.TextView;
-
-import androidx.viewpager.widget.ViewPager;
 
 import com.example.liapplication_demo.R;
 import com.example.liapplication_demo.base.BaseActivity;
 import com.example.liapplication_demo.model.domain.Commodities;
-import com.example.liapplication_demo.ui.adapter.ComImageAdapter;
-import com.example.liapplication_demo.utils.LogUtils;
-
-import java.util.ArrayList;
-import java.util.List;
 
 import butterknife.BindView;
 
@@ -38,15 +28,10 @@ public class ShopCommodityDetailActivity extends BaseActivity {
     public TextView mNameTv;
     @BindView(R.id.detail)
     public TextView mDetailTv;
-    @BindView(R.id.viewPage)
-    public ViewPager mImage;
 
 
     private Integer num = new Integer(1);
     private Commodities.DataBean mCommodity;
-
-    private List<String> commodityImageURL;
-    private int imageNum;
 
     @Override
     protected int getLayoutResId() {
@@ -64,11 +49,9 @@ public class ShopCommodityDetailActivity extends BaseActivity {
     }
 
     private void setData() {
-        mPriceTv.setText("￥" + mCommodity.getComPrice());
+        mPriceTv.setText("￥"+mCommodity.getComPrice());
         mNameTv.setText(mCommodity.getComName());
         mDetailTv.setText(mCommodity.getComDescription());
-        commodityImageURL = mCommodity.getComIconList();
-        imageNum = commodityImageURL.size();
     }
 
     @Override

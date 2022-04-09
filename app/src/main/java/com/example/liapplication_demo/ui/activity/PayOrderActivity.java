@@ -20,7 +20,7 @@ public class PayOrderActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activiry_pay);
+        setContentView(R.layout.activity_pay);
 
         alipayButton = findViewById(R.id.alipayButton);
         wx_payButton = findViewById(R.id.wx_button);
