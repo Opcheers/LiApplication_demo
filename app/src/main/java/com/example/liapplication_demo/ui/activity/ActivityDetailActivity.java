@@ -65,7 +65,7 @@ public class ActivityDetailActivity extends BaseActivity  {
         if (mfarmActivity.getActIcon()!=null) {
             for (int i = 0; i < mfarmActivity.getActIcon().size(); i++) {
                 ImageView icon = new ImageView(this);
-                LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, 400);
+                LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
                 Glide.with(this).load(mfarmActivity.getActIcon().get(i)).into(icon);
                 icon.setScaleType(ImageView.ScaleType.FIT_XY);
                 icon.setPadding(0, 10, 0, 10);

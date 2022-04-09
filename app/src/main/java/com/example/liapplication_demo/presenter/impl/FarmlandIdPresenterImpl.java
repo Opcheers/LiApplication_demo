@@ -35,18 +35,22 @@ public class FarmlandIdPresenterImpl implements IFarmlandIdPresenter {
                 int code = response.code();
                 if (code == HttpURLConnection.HTTP_OK) {
                     //请求成功
+
                     FarmlandItem farmlandItem = response.body();
                     List<Farmland> farmlands = farmlandItem.getData();
                     //通知UI
                     mCallback.onFarmlandIdLoaded(farmlands);
                 }else{
                     //请求失败
+                    LogUtils.d(FarmlandIdPresenterImpl.this, "请求失败...");
                 }
             }
 
             @Override
             public void onFailure(Call<FarmlandItem> call, Throwable t) {
                 //请求错误
+                LogUtils.d(FarmlandIdPresenterImpl.this, "请求错误..." + t);
+
             }
         });
 
@@ -73,7 +77,7 @@ public class FarmlandIdPresenterImpl implements IFarmlandIdPresenter {
                     }
                     //通知UI
                     mCallback.onGroupIdLoaded(groupIdList);
-                }else{
+                } else {
                     //请求失败
                     LogUtils.d(FarmlandIdPresenterImpl.this, "请求失败...");
                 }
@@ -82,16 +86,12 @@ public class FarmlandIdPresenterImpl implements IFarmlandIdPresenter {
             @Override
             public void onFailure(Call<FarmlandGroup> call, Throwable t) {
                 //请求错误
-                LogUtils.d(FarmlandIdPresenterImpl.this, "请求错误...");
-
+                LogUtils.d(FarmlandIdPresenterImpl.this, "请求错误..." + t);
             }
         });
     }
-
-    @Override
     public void registerCallback(IFarmLandIdCallback callback) {
         mCallback = callback;
-
     }
 
     @Override

@@ -16,7 +16,7 @@ import com.example.liapplication_demo.utils.LogUtils;
 import butterknife.BindView;
 
 public class FarmLandPayActivity extends BaseActivity {
-    
+
     @BindView(R.id.name)
     public EditText mNameEt;
     @BindView(R.id.phone)
@@ -36,16 +36,16 @@ public class FarmLandPayActivity extends BaseActivity {
     protected int getLayoutResId() {
         return R.layout.activity_farmland_pay;
     }
-    
+
     @Override
     protected void initView() {
 
         Intent intent = getIntent();
         Farmland farmland = (Farmland) intent.getSerializableExtra("farmland");
         LogUtils.d(this, "farmland --> " + farmland.toString());
-        
+
         mPriceTv.setText("总额：" + farmland.getFmPrice() + "￥");
-        
+
         //去支付设置监听
 
     }

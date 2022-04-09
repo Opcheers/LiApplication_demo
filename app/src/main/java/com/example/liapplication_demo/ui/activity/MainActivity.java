@@ -2,7 +2,6 @@ package com.example.liapplication_demo.ui.activity;
 
 import android.content.Intent;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -10,25 +9,27 @@ import android.widget.Toast;
 
 import com.example.liapplication_demo.R;
 import com.example.liapplication_demo.base.BaseActivity;
+import com.example.liapplication_demo.utils.LogUtils;
 
 import java.io.File;
 import java.io.FileOutputStream;
 
+import butterknife.BindView;
+
 public class MainActivity extends BaseActivity {
 
-    private EditText mAccount;
-    private EditText mVerification;
-    private Button mGetCode;
-    private Button mLogin;
+    @BindView(R.id.main_et_telnumber)
+    public EditText mAccount;
+    @BindView(R.id.main_et_pwdcode)
+    public EditText mVerification;
+    @BindView(R.id.main_btn_getcode)
+    public Button mGetCode;
+    @BindView(R.id.main_btn_login)
+    public Button mLogin;
 
-    private static final String TAG = "MainActivity";
 
     @Override
     protected void initView() {
-        mAccount = findViewById(R.id.main_et_telnumber);
-        mVerification = findViewById(R.id.main_et_pwdcode);
-        mGetCode = findViewById(R.id.main_btn_getcode);
-        mLogin = findViewById(R.id.main_btn_login);
 
     }
 
@@ -47,7 +48,7 @@ public class MainActivity extends BaseActivity {
         mGetCode.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Log.d(TAG, "点击获取验证码 ...");
+                LogUtils.d(this, "点击获取验证码...");
                 handlerGetCode();
             }
         });
@@ -56,7 +57,7 @@ public class MainActivity extends BaseActivity {
         mLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Log.d(TAG, "点击登录 ...");
+                LogUtils.d(this, "点击登录...");
                 handlerLogin();
             }
         });
@@ -70,8 +71,13 @@ public class MainActivity extends BaseActivity {
             Toast.makeText(this, "输入手机号为空，请输入手机号！", Toast.LENGTH_SHORT).show();
             return;
         }
+        if (telText.length()!=11 || !TextUtils.isDigitsOnly(telText)) {
+            Toast.makeText(this, "请正确填写手机号码！", Toast.LENGTH_SHORT).show();
+            return;
+        }
 
-        //获取到手机号，就要创建一个意图对象，然后传给短信验证那边？
+        //获取到手机号，就要创建一个意图对象，然后传给短信验证那边
+        mVerification.setText("111111");
 
     }
 
@@ -102,11 +108,11 @@ public class MainActivity extends BaseActivity {
     }
 
     private void saveUserInfo(String telText, String pwdcodeText) {
-        Log.d(TAG, "保存用户信息...");
+        LogUtils.d(this, "保存用户信息...");
 
         //获取保存路径
-        File filesDir = this.getFilesDir();///data/user/0/com.example.farm_of_li/files
-        Log.d(TAG, "saveUserInfo: fileDir = "+filesDir.toString());
+        File filesDir = this.getFilesDir();//  路径/data/user/0/com.example.farm_of_li/files
+        LogUtils.d(this, "saveUserInfo: fileDir = "+filesDir.toString());
         File saveFile = new File(filesDir, "userinfo.text");
         try {
             if (!saveFile.exists()){

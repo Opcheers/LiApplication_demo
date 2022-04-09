@@ -25,13 +25,16 @@ public interface Api {
     @GET
     Call<FarmActivities> getActivityDetailById(@Url String url);
 
-    @GET("farmland/findAllGroup")
-    Call<FarmlandGroup> getFarmlandGroup();
-
     @GET
     Call<FarmlandItem> getFarmlandItemByGroupId(@Url String url);
 
     @GET("calligraphy/findAll")
     Call<Calligraphy> getCalligraphy();
+
+    @GET("farmland/findAllGroup")
+    Call<FarmlandGroup> getFarmlandGroup();
+
+    @GET("farmland/findByGroup")
+    Call<FarmlandItem> getFarmlandItem();
 
 }

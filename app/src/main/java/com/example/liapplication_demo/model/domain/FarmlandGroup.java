@@ -2,11 +2,6 @@ package com.example.liapplication_demo.model.domain;
 
 import java.util.List;
 
-
-/**
- * 网络数据——生产组
- */
-
 public class FarmlandGroup {
 
 
@@ -49,7 +44,7 @@ public class FarmlandGroup {
 
     public static class DataBean {
         private String group;
-        private List<Farmland> farmlands;
+        private List<FarmlandItem> farmlands;
 
         public String getGroup() {
             return group;
@@ -67,11 +62,11 @@ public class FarmlandGroup {
             this.group = group;
         }
 
-        public List<Farmland> getFarmlands() {
+        public List<FarmlandItem> getFarmlands() {
             return farmlands;
         }
 
-        public void setFarmlands(List<Farmland> farmlands) {
+        public void setFarmlands(List<FarmlandItem> farmlands) {
             this.farmlands = farmlands;
         }
     }

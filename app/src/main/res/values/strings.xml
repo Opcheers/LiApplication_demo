@@ -75,6 +75,12 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="showQrcode">查看详情</string>
+    <string name="tips_lease_mode_1">无托管</string>
+    <string name="tips_lease_mode_2">全托管</string>
+    <string-array name="lease_mode">
+        <item>无托管</item>
+        <item>全托管</item>
+    </string-array>
 
 
 </resources>

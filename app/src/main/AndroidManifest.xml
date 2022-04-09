@@ -16,13 +16,13 @@
         <activity android:name=".ui.activity.ShopCommodityDetailActivity"/>
         <activity android:name=".ui.activity.PayOrderActivity"/>
 
-        <activity android:name=".ui.activity.MainActivity" />
-        <activity android:name=".ui.activity.HomeActivity" android:exported="true">
+        <activity android:name=".ui.activity.MainActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".ui.activity.HomeActivity"/>
 
         <activity android:name=".ui.activity.ActivityDetailActivity" />
         <activity android:name=".ui.activity.ActivityOrderActivity" />
@@ -35,6 +35,9 @@
 
         <activity android:name=".ui.activity.CalligraphyAllActivity"/>
         <activity android:name=".ui.activity.CalligraphyDetailActivity"/>
+
+        <activity android:name=".ui.activity.MyLandActivity"/>
+        <activity android:name=".ui.activity.MyOrderActivity"/>
     </application>
 
 </manifest>

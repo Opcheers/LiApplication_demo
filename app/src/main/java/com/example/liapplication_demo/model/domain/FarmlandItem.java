@@ -1,11 +1,7 @@
 package com.example.liapplication_demo.model.domain;
 
-
 import java.util.List;
 
-/**
- * 网络数据——土地
- */
 public class FarmlandItem {
 
 
