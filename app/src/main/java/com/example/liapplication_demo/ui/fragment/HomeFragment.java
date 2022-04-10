@@ -68,6 +68,7 @@ public class HomeFragment extends BaseFragment implements IHomeCallback, ViewPag
     protected void initView(View rootView) {
         setUpStates(State.SUCCESS);
 
+
         //设置适配器，给适配器设置数据
         mLooperPagerAdapter = new HomeLooperPagerAdapter();
         mLooperPagerAdapter.setPics(sPics);

@@ -2,6 +2,8 @@ package com.example.liapplication_demo.ui.activity;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
@@ -14,6 +16,11 @@ import com.example.liapplication_demo.R;
 import com.example.liapplication_demo.base.BaseActivity;
 import com.example.liapplication_demo.model.domain.Calligraphy;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.List;
 
 import butterknife.BindView;
@@ -33,7 +40,40 @@ public class CalligraphyDetailActivity extends BaseActivity {
       Intent intent = getIntent();
       Calligraphy.DataBean calligraphy = (Calligraphy.DataBean) intent.getSerializableExtra("calligraphy");
       List<String> icon = calligraphy.getCalIcon();
+
+      //加载详情大图
       Glide.with(this).load(icon.get(0)).into(detail);
+   }
+
+
+   private void onIconLoaded(List<String> icon) {
+
+      //拿到Url转成bitmap
+      try {
+         URL url = new URL(icon.get(0));
+         HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+         connection.setConnectTimeout(10000);
+         connection.setRequestMethod("GET");
+         connection.setRequestProperty("Accept-Language" ,"zh-CN, zh; q=0.9");
+         connection.setRequestProperty("Accept", "*/*");
+         connection.connect();
+         int responseCode = connection.getResponseCode();
+         if (responseCode == HttpURLConnection.HTTP_OK) {
+            InputStream inputStream = connection.getInputStream();
+            Bitmap bitmap = BitmapFactory.decodeStream(inputStream);
+            runOnUiThread(new Runnable() {
+               @Override
+               public void run() {
+                  detail.setImageBitmap(bitmap);
+               }
+            });
+         }
+      } catch (MalformedURLException e) {
+         e.printStackTrace();
+      } catch (IOException e) {
+         e.printStackTrace();
+      }
+
    }
 
    @Override

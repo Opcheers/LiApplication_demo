@@ -49,17 +49,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/comName"
-            android:layout_marginLeft="5dp"
-            android:layout_toRightOf="@id/comPrice"
+            android:layout_marginRight="5dp"
+            android:layout_alignParentRight="true"
             android:text="0人付款" />
 
-        <TextView
-            android:id="@+id/comStock"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/comName"
-            android:layout_alignParentRight="true"
-            android:text="库存10000" />
     </RelativeLayout>
 
 </LinearLayout>

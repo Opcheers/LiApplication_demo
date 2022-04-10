@@ -10,7 +10,12 @@ import android.widget.TextView;
 import com.example.liapplication_demo.R;
 import com.example.liapplication_demo.base.BaseFragment;
 import com.example.liapplication_demo.ui.activity.FarmlandMineAcitivty;
+import com.example.liapplication_demo.ui.activity.MainActivity;
 import com.example.liapplication_demo.ui.activity.MyOrderActivity;
+import com.example.liapplication_demo.utils.LogUtils;
+
+import java.io.File;
+import java.io.FileOutputStream;
 
 import butterknife.BindView;
 
@@ -66,8 +71,32 @@ public class UserFragment extends BaseFragment {
         exitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // Add processing logic here
+                handleLogout();
             }
         });
+    }
+
+    private void handleLogout() {
+
+            LogUtils.d(this, "清空用户信息...");
+
+            //获取保存路径
+            File filesDir = this.getActivity().getFilesDir();//  路径/data/user/0/com.example.farm_of_li/files
+            LogUtils.d(this, "saveUserInfo: fileDir = "+filesDir.toString());
+            File saveFile = new File(filesDir, "userinfo.text");
+            try {
+                if (!saveFile.exists()){
+                    saveFile.createNewFile();
+                }
+                FileOutputStream fos = new FileOutputStream(saveFile);
+                //以特定格式存储:账号：***，密码：***
+                fos.write(("").getBytes());
+                fos.close();
+
+                Intent intent = new Intent(getActivity(), MainActivity.class);
+                startActivity(intent);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
     }
 }

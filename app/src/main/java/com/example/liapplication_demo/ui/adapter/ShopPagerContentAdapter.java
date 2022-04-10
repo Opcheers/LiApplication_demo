@@ -65,8 +65,6 @@ public class ShopPagerContentAdapter extends RecyclerView.Adapter<ShopPagerConte
         public TextView comName;
         @BindView(R.id.comPrice)
         public TextView comPrice;
-        @BindView(R.id.comStock)
-        public TextView comStock;
         @BindView(R.id.paidNum)
         public TextView paidNum;
         @BindView(R.id.comPreview)
@@ -81,7 +79,6 @@ public class ShopPagerContentAdapter extends RecyclerView.Adapter<ShopPagerConte
         public void setData(Commodities.DataBean dataBean) {
             comName.setText(dataBean.getComName());
             comPrice.setText("￥"+dataBean.getComPrice());
-            comStock.setText("库存"+dataBean.getComStock());
             paidNum.setText(dataBean.getPaidNum()+"人付款");
             Glide.with(itemView.getContext()).load(dataBean.getComPreview()).into(comPreview);
         }
