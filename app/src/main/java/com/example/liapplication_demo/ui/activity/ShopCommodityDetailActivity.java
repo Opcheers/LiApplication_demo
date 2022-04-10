@@ -3,8 +3,10 @@ package com.example.liapplication_demo.ui.activity;
 import android.content.Intent;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.example.liapplication_demo.R;
 import com.example.liapplication_demo.base.BaseActivity;
 import com.example.liapplication_demo.model.domain.Commodities;
@@ -29,6 +31,8 @@ public class ShopCommodityDetailActivity extends BaseActivity {
     @BindView(R.id.detail)
     public TextView mDetailTv;
 
+    @BindView(R.id.CommodityImage)
+    public ImageView commodityImage;
 
     private Integer num = new Integer(1);
     private Commodities.DataBean mCommodity;
@@ -43,6 +47,7 @@ public class ShopCommodityDetailActivity extends BaseActivity {
         Intent intent = getIntent();
 
         mCommodity = (Commodities.DataBean) intent.getSerializableExtra("commodity");
+        Glide.with(this).load(mCommodity.getComPreview()).into(commodityImage);
 
         //加载到页面上
         setData();
