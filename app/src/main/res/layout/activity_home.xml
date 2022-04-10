@@ -19,8 +19,9 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:background="@color/white"
-        app:itemTextColor="@drawable/selector_navigation_bar_color"
         app:itemIconTint="@drawable/selector_navigation_bar_color"
-        app:menu="@menu/my_navigation_items"/>
+        app:itemTextColor="@drawable/selector_navigation_bar_color"
+        app:labelVisibilityMode="labeled"
+        app:menu="@menu/my_navigation_items" />
 
 </RelativeLayout>

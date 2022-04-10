@@ -60,7 +60,7 @@
         android:layout_toRightOf="@id/main_et_pwdcode"
         android:background="@drawable/shape_main_btn"
         android:onClick="onClick"
-        android:text="@string/main_btn_getcode"
+        android:text="@string/main_btn_getCode"
         android:textColor="@color/white"
         android:textSize="14dp" />
     <Button
