@@ -1,15 +1,31 @@
 package com.example.liapplication_demo.ui.activity;
 
 import android.content.Intent;
+import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.viewpager.widget.ViewPager;
+import androidx.viewpager2.widget.ViewPager2;
+
 import com.bumptech.glide.Glide;
 import com.example.liapplication_demo.R;
 import com.example.liapplication_demo.base.BaseActivity;
 import com.example.liapplication_demo.model.domain.Commodities;
+import com.example.liapplication_demo.ui.adapter.ComImageAdapter;
+//import com.lljjcoder.Interface.OnCityItemClickListener;
+//import com.lljjcoder.bean.CityBean;
+//import com.lljjcoder.bean.DistrictBean;
+//import com.lljjcoder.bean.ProvinceBean;
+//import com.lljjcoder.citywheel.CityConfig;
+//import com.lljjcoder.style.citylist.Toast.ToastUtils;
+//import com.lljjcoder.style.citypickerview.CityPickerView;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.BindView;
 
@@ -31,11 +47,12 @@ public class ShopCommodityDetailActivity extends BaseActivity {
     @BindView(R.id.detail)
     public TextView mDetailTv;
 
-    @BindView(R.id.CommodityImage)
-    public ImageView commodityImage;
+    @BindView(R.id.commodity_image_container)
+    public ViewPager commodityImage;
 
     private Integer num = new Integer(1);
     private Commodities.DataBean mCommodity;
+//    private CityPickerView mPicker=new CityPickerView();
 
     @Override
     protected int getLayoutResId() {
@@ -47,16 +64,19 @@ public class ShopCommodityDetailActivity extends BaseActivity {
         Intent intent = getIntent();
 
         mCommodity = (Commodities.DataBean) intent.getSerializableExtra("commodity");
-        Glide.with(this).load(mCommodity.getComPreview()).into(commodityImage);
+//        mPicker.init(this);
 
         //加载到页面上
         setData();
     }
 
     private void setData() {
-        mPriceTv.setText("￥"+mCommodity.getComPrice());
+        mPriceTv.setText("￥" + mCommodity.getComPrice());
         mNameTv.setText(mCommodity.getComName());
         mDetailTv.setText(mCommodity.getComDescription());
+
+        ComImageAdapter comImageAdapter = new ComImageAdapter(mCommodity.getComIconList(), this);
+        commodityImage.setAdapter(comImageAdapter);
     }
 
     @Override
@@ -64,6 +84,25 @@ public class ShopCommodityDetailActivity extends BaseActivity {
         onSubBtnListener();
         onAddBtnListener();
         onPayButtonListener();
+        onCitySelectorButtonListener();
+    }
+
+    private void onCitySelectorButtonListener() {
+//        CityConfig cityConfig = new CityConfig.Builder().build();
+//        mPicker.setConfig(cityConfig);
+//
+//        mPicker.setOnCityItemClickListener(new OnCityItemClickListener() {
+//            @Override
+//            public void onSelected(ProvinceBean province, CityBean city, DistrictBean district) {
+//                // 填入处理逻辑
+//
+//            }
+//
+//            @Override
+//            public void onCancel() {
+//                ToastUtils.showLongToast(ShopCommodityDetailActivity.this, "已取消");
+//            }
+//        });
     }
 
     private void onPayButtonListener() {
@@ -96,6 +135,4 @@ public class ShopCommodityDetailActivity extends BaseActivity {
             }
         });
     }
-
-
 }

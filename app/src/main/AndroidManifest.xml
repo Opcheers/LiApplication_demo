@@ -4,10 +4,12 @@
     package="com.example.liapplication_demo">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-sdk tools:overrideLibrary="com.github.crazyandcoder:citypicker:6.0.2"/>
 
     <application
         android:allowBackup="true"
         android:icon="@mipmap/applogo_01"
+        tools:replace="android:theme"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
