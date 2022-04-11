@@ -50,6 +50,7 @@ public class MyOrderActivity extends AppCompatActivity implements View.OnClickLi
 
         OrderFragmentAdapter orderFragmentAdapter = new OrderFragmentAdapter(getSupportFragmentManager(), getLifecycle(), fragmentList);
         viewPager2.setAdapter(orderFragmentAdapter);
+
         viewPager2.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
