@@ -17,4 +17,12 @@ public class UrlUtils {
     public static String createCommodityOrderUrl(String userId){
         return "comOrder/findAllByUserIdAndAndPayStatus/"+userId+"/1";
     }
+
+    public static String createGetVerifyCodeUrl(String userId){
+        return "user/sendVerifyCodeSms/"+userId;
+    }
+
+    public static String createLoginUrl(String userId, String userCode){
+        return "user/login/"+userId+"/"+userId;
+    }
 }

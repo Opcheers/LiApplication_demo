@@ -84,6 +84,7 @@ public class ActivityDetailActivity extends BaseActivity  {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(ActivityDetailActivity.this, ActivityOrderActivity.class);
+                intent.putExtra("actId", mfarmActivity.getActId());
                 intent.putStringArrayListExtra("actDate", (ArrayList<String>) mfarmActivity.getActDate());
                 intent.putExtra("actPrice", mfarmActivity.getActPrice());
                 startActivity(intent);

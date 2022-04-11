@@ -1,5 +1,6 @@
 package com.example.liapplication_demo.ui.activity;
 
+import android.content.Intent;
 import android.view.MenuItem;
 
 import androidx.annotation.NonNull;
@@ -9,6 +10,7 @@ import androidx.fragment.app.FragmentTransaction;
 import com.example.liapplication_demo.R;
 import com.example.liapplication_demo.base.BaseActivity;
 import com.example.liapplication_demo.base.BaseFragment;
+import com.example.liapplication_demo.model.domain.User;
 import com.example.liapplication_demo.ui.fragment.ActivityFragment;
 import com.example.liapplication_demo.ui.fragment.HomeFragment;
 import com.example.liapplication_demo.ui.fragment.ShopFragment;
@@ -37,6 +39,12 @@ public class HomeActivity extends BaseActivity {
 
     @Override
     protected void initView() {
+
+        Intent intent = getIntent();
+        String userId = intent.getStringExtra("userId");
+        User user = new User(userId);
+
+
         mHomeFragment = new HomeFragment();
         mActivityFragment = new ActivityFragment();
         mShopFragment = new ShopFragment();

@@ -12,7 +12,8 @@ public class Visitor implements Parcelable {
     public Visitor(String name, String id, String phone) {
         this.name = name;
         this.id = id;
-        this.phone = phone;
+        //this.phone = phone;
+        this.type = 0;
     }
 
     protected Visitor(Parcel in) {
