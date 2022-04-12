@@ -11,13 +11,6 @@ import com.example.liapplication_demo.R;
 import com.example.liapplication_demo.base.BaseActivity;
 import com.example.liapplication_demo.model.domain.Commodities;
 import com.example.liapplication_demo.ui.adapter.ComImageAdapter;
-import com.lljjcoder.Interface.OnCityItemClickListener;
-import com.lljjcoder.bean.CityBean;
-import com.lljjcoder.bean.DistrictBean;
-import com.lljjcoder.bean.ProvinceBean;
-import com.lljjcoder.citywheel.CityConfig;
-import com.lljjcoder.style.citylist.Toast.ToastUtils;
-import com.lljjcoder.style.citypickerview.CityPickerView;
 
 import butterknife.BindView;
 
@@ -44,7 +37,6 @@ public class ShopCommodityDetailActivity extends BaseActivity {
 
     private Integer num = new Integer(1);
     private Commodities.DataBean mCommodity;
-    private CityPickerView mPicker=new CityPickerView();
 
     @Override
     protected int getLayoutResId() {
@@ -56,7 +48,6 @@ public class ShopCommodityDetailActivity extends BaseActivity {
         Intent intent = getIntent();
 
         mCommodity = (Commodities.DataBean) intent.getSerializableExtra("commodity");
-        mPicker.init(this);
 
         //加载到页面上
         setData();
@@ -80,21 +71,7 @@ public class ShopCommodityDetailActivity extends BaseActivity {
     }
 
     private void onCitySelectorButtonListener() {
-        CityConfig cityConfig = new CityConfig.Builder().build();
-        mPicker.setConfig(cityConfig);
-
-        mPicker.setOnCityItemClickListener(new OnCityItemClickListener() {
-            @Override
-            public void onSelected(ProvinceBean province, CityBean city, DistrictBean district) {
-                // 填入处理逻辑
-
-            }
-
-            @Override
-            public void onCancel() {
-                ToastUtils.showLongToast(ShopCommodityDetailActivity.this, "已取消");
-            }
-        });
+       
     }
 
     private void onPayButtonListener() {
