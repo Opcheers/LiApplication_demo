@@ -10,7 +10,7 @@ import android.widget.Toast;
 
 import com.example.liapplication_demo.R;
 import com.example.liapplication_demo.base.BaseActivity;
-import com.example.liapplication_demo.model.domain.Visitor;
+import com.example.liapplication_demo.model.domain.identityInfoVOList;
 import com.example.liapplication_demo.utils.Constants;
 
 import butterknife.BindView;
@@ -76,7 +76,7 @@ public class ActivityAddVistorActivity extends BaseActivity {
             return;
         }
 
-        Visitor visitor = new Visitor(visitorName, visitorId, visitorPhone);
+        identityInfoVOList identityInfoVOList = new identityInfoVOList(visitorName, visitorId, visitorPhone);
 
         //界面置空
         mName.setText("");
@@ -86,7 +86,7 @@ public class ActivityAddVistorActivity extends BaseActivity {
         //返还数据给订单页面
         Intent intent = new Intent(ActivityAddVistorActivity.this, ActivityOrderActivity.class);
         Bundle bundle = new Bundle();
-        bundle.putParcelable("visitor", visitor);
+        bundle.putParcelable("identityInfoVOList", identityInfoVOList);
         intent.putExtras(bundle);
         setResult(RESULT_OK, intent);
         finish();

@@ -1,7 +1,6 @@
 package com.example.liapplication_demo.ui.activity;
 
 import android.content.Intent;
-import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
@@ -16,19 +15,30 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.liapplication_demo.R;
 import com.example.liapplication_demo.base.BaseActivity;
+import com.example.liapplication_demo.model.Api;
 import com.example.liapplication_demo.model.domain.PostActivityOrder;
+import com.example.liapplication_demo.model.domain.PostResult;
 import com.example.liapplication_demo.model.domain.User;
-import com.example.liapplication_demo.model.domain.Visitor;
+import com.example.liapplication_demo.model.domain.identityInfoVOList;
 import com.example.liapplication_demo.ui.adapter.ActivityOrderAdapter;
 import com.example.liapplication_demo.ui.adapter.ActivityOrderVisitorAdapter;
+import com.example.liapplication_demo.utils.LogUtils;
+import com.example.liapplication_demo.utils.RetrofitManager;
 
+import java.net.HttpURLConnection;
 import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
 
 public class ActivityOrderActivity extends BaseActivity implements ActivityOrderAdapter.OnClickDateListListener {
 
+    private static final int ADD_REQUEST_CODE = 1;//转到添加界面
+    private static final int PAY_REQUEST_CODE = 2;//转到充值界面
     @BindView(R.id.date_list_view)
     public RecyclerView mDateList;
     @BindView(R.id.add_visitor)
@@ -50,9 +60,10 @@ public class ActivityOrderActivity extends BaseActivity implements ActivityOrder
     private ArrayList<String> mActDateList;//订单日期
     private double mActPrice;//价格
     private String mActId;
-    private List<Visitor> mVisitorData = new ArrayList<>();//游客
+    private List<identityInfoVOList> mIdentityInfoVOListData = new ArrayList<>();//游客
     private double mTotalPriceNum;
     private String mActDate = null;//选中的日期
+    private PostActivityOrder mActivityOrder;
 
 
     @Override
@@ -82,26 +93,34 @@ public class ActivityOrderActivity extends BaseActivity implements ActivityOrder
     @Override
     protected void initEvent() {
         onPayBtnListener();
-
-        //添加游客
-        mAddVisitorBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(ActivityOrderActivity.this, ActivityAddVistorActivity.class);
-                startActivityForResult(intent, 1);
-            }
-        });
+        onAddBtnListener();
 
         //给日期适配器设置监听
         mOrderDateAdapter.setOnClickDateListListener(this);
     }
 
+    /**
+     * 添加游客
+     */
+    private void onAddBtnListener() {
+        mAddVisitorBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //跳转到添加界面
+                Intent intent = new Intent(ActivityOrderActivity.this, ActivityAddVistorActivity.class);
+                startActivityForResult(intent, ADD_REQUEST_CODE);
+            }
+        });
+    }
+
+    /**
+     * 去支付
+     */
     private void onPayBtnListener() {
-        //去支付
         mPayBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //日期、乘车地点、联系电话、游客信息校验
+                //信息校验+跳转到支付界面
                 handlerOrderInfo();
             }
 
@@ -127,19 +146,25 @@ public class ActivityOrderActivity extends BaseActivity implements ActivityOrder
             Toast.makeText(this, "手机号为11位数字，不能包含其他字符", Toast.LENGTH_SHORT).show();
             return;
         }
-        if (mVisitorData == null || mVisitorData.size() == 0){
+        if (mIdentityInfoVOListData == null || mIdentityInfoVOListData.size() == 0){
             Toast.makeText(this, "请添加乘客信息", Toast.LENGTH_SHORT).show();
             return;
         }
 
-        PostActivityOrder activityOrder = new PostActivityOrder(mActId, mVisitorData, mActDate, mVisitorData.size(), actSite, User.userId, actPhone);
+        mActivityOrder = new PostActivityOrder(mActId, mIdentityInfoVOListData, mActDate, mIdentityInfoVOListData.size(), actSite, User.userId, actPhone);
 
+        LogUtils.d(this, "handlerOrderInfo --> " + mActivityOrder.toString());
+
+        //转到收银台：传价格
         Intent intent = new Intent(ActivityOrderActivity.this, PayOrderActivity.class);
-        Bundle bundle = new Bundle();
-        bundle.putParcelable("activityOrder", activityOrder);
-        intent.putExtras(bundle);
+
         intent.putExtra("actPrice", mActPrice);
-        startActivity(intent);
+        startActivityForResult(intent, PAY_REQUEST_CODE);
+
+
+//        Bundle bundle = new Bundle();
+//        bundle.putParcelable("activityOrder", activityOrder);
+//        intent.putExtras(bundle);
     }
 
 
@@ -147,14 +172,52 @@ public class ActivityOrderActivity extends BaseActivity implements ActivityOrder
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         switch (requestCode) {
-            case 1:
+            case ADD_REQUEST_CODE:
                 if (resultCode == RESULT_OK) {
-                    Visitor visitor = data.getParcelableExtra("visitor");
-                    mVisitorData.add(visitor);
+                    identityInfoVOList identityInfoVOList = data.getParcelableExtra("identityInfoVOList");
+                    mIdentityInfoVOListData.add(identityInfoVOList);
                     loadVisitorListView();
                 }
                 break;
+            case PAY_REQUEST_CODE:
+                if (resultCode == 21) {
+                    Toast.makeText(this, "支付成功！", Toast.LENGTH_SHORT).show();
+                    createActivityOrder();
+                } else if (resultCode == 22){
+                    Toast.makeText(this, "支付失败！", Toast.LENGTH_SHORT).show();
+                }
         }
+    }
+
+    /**
+     * 创建订单提交给后台
+     */
+    private void createActivityOrder() {
+        Retrofit retrofit = RetrofitManager.getInstance().getRetrofit();
+        Api api = retrofit.create(Api.class);
+        Call<PostResult> task  = api.createActOrder(mActivityOrder);
+        LogUtils.d(this, "activity order --> " + mActivityOrder.toString());
+        task.enqueue(new Callback<PostResult>() {
+            @Override
+            public void onResponse(Call<PostResult> call, Response<PostResult> response) {
+                int code = response.code();
+                LogUtils.d(this, "code --> " + code);
+                if (code == HttpURLConnection.HTTP_OK) {
+                    //成功
+                    LogUtils.d(this, "订单创建成功：" + response.body().getMsg());
+                } else {
+                    //失败
+                    LogUtils.d(this, "订单创建失败：" + response.message());
+
+                }
+            }
+
+            @Override
+            public void onFailure(Call<PostResult> call, Throwable t) {
+                LogUtils.d(this, "订单创建失败：" + t);
+
+            }
+        });
     }
 
     /**
@@ -184,14 +247,14 @@ public class ActivityOrderActivity extends BaseActivity implements ActivityOrder
 
         mVisitorAdapter = new ActivityOrderVisitorAdapter(this);
         mVisitorList.setAdapter(mVisitorAdapter);
-        mVisitorAdapter.setData(mVisitorData);
+        mVisitorAdapter.setData(mIdentityInfoVOListData);
 
         setPrice();
     }
 
 
     public void setPrice() {
-        mTotalPriceNum = mActPrice * mVisitorData.size();
+        mTotalPriceNum = mActPrice * mIdentityInfoVOListData.size();
         mTotalPrice.setText("总额：￥" + String.format("%.2f", mTotalPriceNum));
     }
 

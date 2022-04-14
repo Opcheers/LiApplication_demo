@@ -153,10 +153,6 @@ public class MainActivity extends BaseActivity {
                 if (response.code() == HttpURLConnection.HTTP_OK) {
                     //POST成功
 
-                    //界面置空
-                    mAccountEt.setText("");
-                    mGetCodeBtn.setText("");
-
                     //存储手机号和验证码到本机
                     saveUserInfo(mTelText, mPwdcodeText);
 

@@ -9,14 +9,27 @@ public class PostActivityOrder implements Parcelable {
 
 
     private String actId;
-    private List<Visitor> identityInfoVOList;
+    private List<com.example.liapplication_demo.model.domain.identityInfoVOList> identityInfoVOList;
     private String orderDate;
     private int orderQuantity;
     private String userAddress;
     private String userId;
     private String userPhone;
 
-    public PostActivityOrder(String actId, List<Visitor> identityInfoVOList, String orderDate, int orderQuantity, String userAddress, String userId, String userPhone) {
+    @Override
+    public String toString() {
+        return "PostActivityOrder{" +
+                "actId='" + actId + '\'' +
+                ", identityInfoVOList=" + identityInfoVOList +
+                ", orderDate='" + orderDate + '\'' +
+                ", orderQuantity=" + orderQuantity +
+                ", userAddress='" + userAddress + '\'' +
+                ", userId='" + userId + '\'' +
+                ", userPhone='" + userPhone + '\'' +
+                '}';
+    }
+
+    public PostActivityOrder(String actId, List<com.example.liapplication_demo.model.domain.identityInfoVOList> identityInfoVOList, String orderDate, int orderQuantity, String userAddress, String userId, String userPhone) {
         this.actId = actId;
         this.identityInfoVOList = identityInfoVOList;
         this.orderDate = orderDate;
@@ -28,7 +41,7 @@ public class PostActivityOrder implements Parcelable {
 
     protected PostActivityOrder(Parcel in) {
         actId = in.readString();
-        identityInfoVOList = in.createTypedArrayList(Visitor.CREATOR);
+        identityInfoVOList = in.createTypedArrayList(com.example.liapplication_demo.model.domain.identityInfoVOList.CREATOR);
         orderDate = in.readString();
         orderQuantity = in.readInt();
         userAddress = in.readString();
@@ -56,11 +69,11 @@ public class PostActivityOrder implements Parcelable {
         this.actId = actId;
     }
 
-    public List<Visitor> getIdentityInfoVOList() {
+    public List<com.example.liapplication_demo.model.domain.identityInfoVOList> getIdentityInfoVOList() {
         return identityInfoVOList;
     }
 
-    public void setIdentityInfoVOList(List<Visitor> identityInfoVOList) {
+    public void setIdentityInfoVOList(List<com.example.liapplication_demo.model.domain.identityInfoVOList> identityInfoVOList) {
         this.identityInfoVOList = identityInfoVOList;
     }
 

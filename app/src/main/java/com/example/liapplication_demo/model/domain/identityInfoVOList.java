@@ -3,34 +3,34 @@ package com.example.liapplication_demo.model.domain;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-public class Visitor implements Parcelable {
+public class identityInfoVOList implements Parcelable {
     String name;
-    String id;
+    String identity;
     String phone;
     int type;
 
-    public Visitor(String name, String id, String phone) {
+    public identityInfoVOList(String name, String id, String phone) {
         this.name = name;
-        this.id = id;
+        this.identity = id;
         //this.phone = phone;
         this.type = 0;
     }
 
-    protected Visitor(Parcel in) {
+    protected identityInfoVOList(Parcel in) {
         name = in.readString();
-        id = in.readString();
+        identity = in.readString();
         phone = in.readString();
     }
 
-    public static final Creator<Visitor> CREATOR = new Creator<Visitor>() {
+    public static final Creator<identityInfoVOList> CREATOR = new Creator<identityInfoVOList>() {
         @Override
-        public Visitor createFromParcel(Parcel in) {
-            return new Visitor(in);
+        public identityInfoVOList createFromParcel(Parcel in) {
+            return new identityInfoVOList(in);
         }
 
         @Override
-        public Visitor[] newArray(int size) {
-            return new Visitor[size];
+        public identityInfoVOList[] newArray(int size) {
+            return new identityInfoVOList[size];
         }
     };
 
@@ -42,12 +42,12 @@ public class Visitor implements Parcelable {
         this.name = name;
     }
 
-    public String getId() {
-        return id;
+    public String getIdentity() {
+        return identity;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setIdentity(String identity) {
+        this.identity = identity;
     }
 
     public String getPhone() {
@@ -60,10 +60,11 @@ public class Visitor implements Parcelable {
 
     @Override
     public String toString() {
-        return "Visitor{" +
+        return "identityInfoVOList{" +
                 "name='" + name + '\'' +
-                ", id='" + id + '\'' +
+                ", identity='" + identity + '\'' +
                 ", phone='" + phone + '\'' +
+                ", type=" + type +
                 '}';
     }
 
@@ -75,7 +76,7 @@ public class Visitor implements Parcelable {
     @Override
     public void writeToParcel(Parcel parcel, int i) {
         parcel.writeString(name);
-        parcel.writeString(id);
+        parcel.writeString(identity);
         parcel.writeString(phone);
     }
 }

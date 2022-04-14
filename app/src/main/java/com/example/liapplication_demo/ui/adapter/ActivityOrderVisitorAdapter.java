@@ -10,7 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.liapplication_demo.R;
-import com.example.liapplication_demo.model.domain.Visitor;
+import com.example.liapplication_demo.model.domain.identityInfoVOList;
 import com.example.liapplication_demo.ui.activity.ActivityOrderActivity;
 import com.example.liapplication_demo.utils.LogUtils;
 
@@ -22,7 +22,7 @@ import butterknife.ButterKnife;
 
 public class ActivityOrderVisitorAdapter extends RecyclerView.Adapter<ActivityOrderVisitorAdapter.InnerHolder> {
 
-    private ArrayList<Visitor> mVisitors = new ArrayList<>();
+    private ArrayList<identityInfoVOList> mIdentityInfoVOLists = new ArrayList<>();
     private ActivityOrderActivity mContext;
 
     public ActivityOrderVisitorAdapter(ActivityOrderActivity context) {
@@ -38,20 +38,20 @@ public class ActivityOrderVisitorAdapter extends RecyclerView.Adapter<ActivityOr
 
     @Override
     public void onBindViewHolder(@NonNull ActivityOrderVisitorAdapter.InnerHolder holder, int position) {
-        Visitor visitor = mVisitors.get(position);
-        holder.setData(visitor);
+        identityInfoVOList identityInfoVOList = mIdentityInfoVOLists.get(position);
+        holder.setData(identityInfoVOList);
     }
 
     @Override
     public int getItemCount() {
-        if (mVisitors != null) {
-            return mVisitors.size();
+        if (mIdentityInfoVOLists != null) {
+            return mIdentityInfoVOLists.size();
         }
         return 0;
     }
 
-    public void setData(List<Visitor> visitorData) {
-        mVisitors = (ArrayList)visitorData;
+    public void setData(List<identityInfoVOList> identityInfoVOListData) {
+        mIdentityInfoVOLists = (ArrayList) identityInfoVOListData;
         notifyDataSetChanged();
     }
 
@@ -76,8 +76,8 @@ public class ActivityOrderVisitorAdapter extends RecyclerView.Adapter<ActivityOr
                     pos = getAdapterPosition();
                     LogUtils.d(ActivityOrderVisitorAdapter.this, "delete listener --> " + pos);
 
-                    mVisitors.remove(pos);
-                    LogUtils.d(ActivityOrderVisitorAdapter.this, "after delete  mVisitors.remove(pos) --> " + mVisitors.toString());
+                    mIdentityInfoVOLists.remove(pos);
+                    LogUtils.d(ActivityOrderVisitorAdapter.this, "after delete  mIdentityInfoVOLists.remove(pos) --> " + mIdentityInfoVOLists.toString());
 
                     // 删除数据
                     notifyItemRemoved(pos);
@@ -89,9 +89,9 @@ public class ActivityOrderVisitorAdapter extends RecyclerView.Adapter<ActivityOr
 
         }
 
-        public void setData(Visitor visitor) {
-            visitorName.setText(visitor.getName());
-            visitorId.setText(visitor.getId() + "");
+        public void setData(identityInfoVOList identityInfoVOList) {
+            visitorName.setText(identityInfoVOList.getName());
+            visitorId.setText(identityInfoVOList.getIdentity() + "");
         }
 
     }

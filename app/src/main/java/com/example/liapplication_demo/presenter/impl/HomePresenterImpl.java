@@ -31,11 +31,9 @@ public class HomePresenterImpl implements IHomePresenter {
             @Override
             public void onResponse(Call<FarmActivities> call, Response<FarmActivities> response) {
                 int code = response.code();
-                LogUtils.d(HomePresenterImpl.this, "result code is --> " + code);
                 if (code == HttpURLConnection.HTTP_OK) {
                     //请求成功
                     FarmActivities farmActivities = response.body();
-                    LogUtils.d(HomePresenterImpl.this, farmActivities.toString());
                     if (mCallback!=null) {
                         mCallback.onTopActivityLoaded(farmActivities.getData());
                     }
@@ -55,6 +53,7 @@ public class HomePresenterImpl implements IHomePresenter {
     }
 
     @Override
+
     public void registerCallback(IHomeCallback callback) {
         //通知ui
         this.mCallback = callback;

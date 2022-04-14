@@ -56,7 +56,7 @@ public class ActivityOrder {
         private int payStatus;
         private int isUsed;
         private Object orderBill;
-        private List<Visitor> identityInfoVOList;
+        private List<com.example.liapplication_demo.model.domain.identityInfoVOList> identityInfoVOList;
 
         @Override
         public String toString() {
@@ -182,11 +182,11 @@ public class ActivityOrder {
             this.orderBill = orderBill;
         }
 
-        public List<Visitor> getIdentityInfoVOList() {
+        public List<com.example.liapplication_demo.model.domain.identityInfoVOList> getIdentityInfoVOList() {
             return identityInfoVOList;
         }
 
-        public void setIdentityInfoVOList(List<Visitor> identityInfoVOList) {
+        public void setIdentityInfoVOList(List<com.example.liapplication_demo.model.domain.identityInfoVOList> identityInfoVOList) {
             this.identityInfoVOList = identityInfoVOList;
         }
 

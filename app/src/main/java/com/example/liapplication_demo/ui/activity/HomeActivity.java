@@ -15,7 +15,14 @@ import com.example.liapplication_demo.ui.fragment.ActivityFragment;
 import com.example.liapplication_demo.ui.fragment.HomeFragment;
 import com.example.liapplication_demo.ui.fragment.ShopFragment;
 import com.example.liapplication_demo.ui.fragment.UserFragment;
+import com.example.liapplication_demo.utils.LogUtils;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+
+import java.io.BufferedReader;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStreamReader;
 
 import butterknife.BindView;
 
@@ -40,10 +47,9 @@ public class HomeActivity extends BaseActivity {
     @Override
     protected void initView() {
 
-        Intent intent = getIntent();
-        String userId = intent.getStringExtra("userId");
-        User user = new User(userId);
+        //读取用户ID
 
+        readUserInfo();
 
         mHomeFragment = new HomeFragment();
         mActivityFragment = new ActivityFragment();
@@ -52,6 +58,35 @@ public class HomeActivity extends BaseActivity {
 
         mFragmentManager = getSupportFragmentManager();
         switchFragment(mHomeFragment);
+    }
+
+    private void readUserInfo() {
+        Intent intent = getIntent();
+        String userId = intent.getStringExtra("userId");
+        User.userId = userId;
+        LogUtils.d(this, "userId --> " + User.userId);
+
+        try {
+            FileInputStream fileInputStream = this.openFileInput("userinfo.text");
+            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(fileInputStream));
+            String info = bufferedReader.readLine();
+            //如果账号密码为空，就重新填写
+            if (info == null || info.length() == 0) {
+                //什么都不做
+            }else {
+                //保存格式:账号：***，密码：***
+                String[] splits = info.split("\\*\\*\\*");
+                String account = splits[0];
+                String pwd = splits[1];
+                //保存
+                User.userId = account;
+            }
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override

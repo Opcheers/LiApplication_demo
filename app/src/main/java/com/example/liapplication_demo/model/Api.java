@@ -49,6 +49,6 @@ public interface Api {
     @POST
     Call<PostResult> login(@Url String url);
 
-    @POST("actOrder/create")
+    @POST("actOrder/create/")
     Call<PostResult> createActOrder(@Body PostActivityOrder activityOrder);
 }
